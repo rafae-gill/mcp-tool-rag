@@ -42,18 +42,22 @@ class BM25:
         df = Counter(w for c in self.docs.values() for w in c)
         n = len(self.docs)
         self.idf = {w: math.log(1 + (n - f + 0.5) / (f + 0.5)) for w, f in df.items()}
+        # Inverted index: term -> [(tool, its full BM25 contribution)]. Every
+        # part of the formula is known per (term, tool) ahead of time, so a
+        # query only touches tools that contain one of its words.
+        self.postings: dict[str, list[tuple[str, float]]] = {}
+        for name, tf in self.docs.items():
+            norm = self.k1 * (1 - self.b + self.b * self.lens[name] / self.avg)
+            for w, f in tf.items():
+                self.postings.setdefault(w, []).append(
+                    (name, self.idf[w] * f * (self.k1 + 1) / (f + norm)))
 
     def scores(self, query: str, candidates: list[Tool]) -> dict[str, float]:
-        q = tokenize(query)
-        out = {}
-        for t in candidates:
-            tf, dl, s = self.docs[t.name], self.lens[t.name], 0.0
-            for w in q:
-                f = tf.get(w, 0)
-                if f:
-                    s += self.idf.get(w, 0.0) * f * (self.k1 + 1) / (
-                        f + self.k1 * (1 - self.b + self.b * dl / self.avg))
-            out[t.name] = s
+        out = {t.name: 0.0 for t in candidates}
+        for w in tokenize(query):
+            for name, s in self.postings.get(w, ()):
+                if name in out:
+                    out[name] += s
         return out
 
 
@@ -77,16 +81,30 @@ class Embeddings:
         self._np = np
         self.model_name = model
         self.model = TextEmbedding(model_name=model)
-        names = [t.name for t in catalog]
+        self.names = [t.name for t in catalog]
+        self.index = {n: i for i, n in enumerate(self.names)}
         vecs = np.array(list(self.model.passage_embed([t.search_text for t in catalog])))
-        vecs /= np.linalg.norm(vecs, axis=1, keepdims=True)
-        self.vec = dict(zip(names, vecs))
+        self.matrix = vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
+        self.vec = dict(zip(self.names, self.matrix))
+        self._qcache: dict[str, object] = {}
+
+    def query_vector(self, query: str):
+        """Embed a request once; repeated searches for it reuse the vector."""
+        v = self._qcache.get(query)
+        if v is None:
+            np = self._np
+            v = np.array(next(iter(self.model.query_embed([query]))))
+            v /= np.linalg.norm(v)
+            if len(self._qcache) > 50_000:
+                self._qcache.clear()
+            self._qcache[query] = v
+        return v
 
     def scores(self, query: str, candidates: list[Tool]) -> dict[str, float]:
-        np = self._np
-        q = np.array(next(iter(self.model.query_embed([query]))))
-        q /= np.linalg.norm(q)
-        return {t.name: float(self.vec[t.name] @ q) for t in candidates}
+        q = self.query_vector(query)
+        idx = [self.index[t.name] for t in candidates]
+        sims = self.matrix[idx] @ q
+        return {t.name: float(s) for t, s in zip(candidates, sims)}
 
 
 class EnrichedEmbeddings:
@@ -109,8 +127,9 @@ class EnrichedEmbeddings:
         if mode not in ("max", "concat"):
             raise ValueError("mode must be 'max' or 'concat'")
         np = base._np
-        self._np, self.model, self.mode = np, base.model, mode
+        self._np, self.base, self.mode = np, base, mode
         self.name = "embeddings+examples" + ("" if mode == "max" else "(concat)")
+        self.index = dict(base.index)
 
         def unit(rows):
             v = np.array(list(rows))
@@ -119,25 +138,29 @@ class EnrichedEmbeddings:
         if mode == "concat":
             texts = [t.search_text + ". Example requests: " + " | ".join(examples.get(t.name, []))
                      for t in catalog]
-            self.vecs = dict(zip([t.name for t in catalog],
-                                 ([v] for v in unit(self.model.passage_embed(texts)))))
+            self.vectors = unit(base.model.passage_embed(texts))
+            self.owner = np.array([base.index[t.name] for t in catalog])
         else:
             ex_texts, owners = [], []
             for t in catalog:
                 for e in examples.get(t.name, []):
                     ex_texts.append(e)
-                    owners.append(t.name)
+                    owners.append(base.index[t.name])
             # Examples are requests, so they're embedded the way requests are.
-            ex_vecs = unit(self.model.query_embed(ex_texts)) if ex_texts else []
-            self.vecs = {t.name: [base.vec[t.name]] for t in catalog}
-            for name, v in zip(owners, ex_vecs):
-                self.vecs[name].append(v)
+            parts = [base.matrix]
+            if ex_texts:
+                parts.append(unit(base.model.query_embed(ex_texts)))
+            self.vectors = np.vstack(parts)
+            self.owner = np.concatenate([np.arange(len(base.names)),
+                                         np.array(owners, dtype=int)])
+        self.n_tools = len(base.names)
 
     def scores(self, query: str, candidates: list[Tool]) -> dict[str, float]:
         np = self._np
-        q = np.array(next(iter(self.model.query_embed([query]))))
-        q /= np.linalg.norm(q)
-        return {t.name: max(float(v @ q) for v in self.vecs[t.name]) for t in candidates}
+        sims = self.vectors @ self.base.query_vector(query)
+        best = np.full(self.n_tools, -np.inf)
+        np.maximum.at(best, self.owner, sims)      # each tool: its best vector
+        return {t.name: float(best[self.index[t.name]]) for t in candidates}
 
 
 class Hybrid:

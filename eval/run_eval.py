@@ -158,6 +158,7 @@ def build(names, catalog, examples=None):
 
 def score(router, catalog, roles, queries, k):
     allowed = {r: allowed_for(p) for r, p in roles.items()}
+    by_name = {t.name: t for t in catalog}
     acc = defaultdict(list)
     by_diff = defaultdict(lambda: defaultdict(list))
     times = []
@@ -171,7 +172,7 @@ def score(router, catalog, roles, queries, k):
         times.append((time.perf_counter() - t0) * 1000)
 
         # The router must never return a forbidden tool. Not a metric: a bug.
-        assert all(ok(next(t for t in catalog if t.name == n)) for n in top10), q["id"]
+        assert all(ok(by_name[n]) for n in top10), q["id"]
 
         unaware = router.search(q["query"], None, k=k, mode="none")
         acc["leak"].append(any(not ok(t) for t in unaware))

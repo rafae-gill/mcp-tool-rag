@@ -17,6 +17,7 @@ agent plans around tools that will be refused.
 """
 from __future__ import annotations
 
+import heapq
 from typing import Callable
 
 from .catalog import Tool
@@ -46,9 +47,10 @@ class ToolRouter:
 
         scores = self.retriever.scores(query, candidates)
         by_name = {t.name: t for t in candidates}
-        # Ties broken by name so results are deterministic run to run.
-        ranked = sorted(scores.items(), key=lambda kv: (-kv[1], kv[0]))
-        top = [by_name[n] for n, _ in ranked[:k]]
+        # Only the top k are needed, so no full sort. Ties broken by name so
+        # results are deterministic run to run.
+        ranked = heapq.nsmallest(k, scores.items(), key=lambda kv: (-kv[1], kv[0]))
+        top = [by_name[n] for n, _ in ranked]
         if mode == "after":
             top = [t for t in top if allowed is not None and _safe(allowed, t)]
         return top

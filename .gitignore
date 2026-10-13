@@ -11,3 +11,6 @@ data/real/*
 !data/real/README.md
 !data/real/queries_TEMPLATE.csv
 results/real/
+
+# Public benchmarks: fetched by eval/fetch_external.py, never re-published.
+external/

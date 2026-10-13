@@ -1,6 +1,7 @@
 """Make sure example requests didn't leak the test set.
 
     python eval/check_leakage.py
+    python eval/check_leakage.py --data external/bfcl_search --examples external/bfcl_search/examples.json
 
 Examples are written from the tool catalog only. This checks that none of
 them is (nearly) a copy of a test request anyway: by shared words, and by
@@ -23,8 +24,14 @@ COSINE = 0.92            # near-paraphrase in embedding space
 
 
 def main():
-    examples = json.loads((ROOT / "data/enrichment/examples.json").read_text(encoding="utf-8"))
-    queries = [json.loads(l) for l in (ROOT / "data/queries.jsonl").read_text(encoding="utf-8").splitlines()
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", default=str(ROOT / "data"))
+    ap.add_argument("--examples", default=str(ROOT / "data" / "enrichment" / "examples.json"))
+    ap.add_argument("--show", type=int, default=30)
+    a = ap.parse_args()
+    examples = json.loads(Path(a.examples).read_text(encoding="utf-8"))
+    queries = [json.loads(l) for l in (Path(a.data) / "queries.jsonl").read_text(encoding="utf-8").splitlines()
                if l.strip()]
     flat = [(tool, e) for tool, es in examples.items() for e in es]
 
@@ -56,7 +63,7 @@ def main():
 
     print("%d examples checked against %d test requests; %d flagged"
           % (len(flat), len(queries), len(flagged)))
-    for why, tool, e, qid, q in flagged:
+    for why, tool, e, qid, q in flagged[: a.show]:
         print("  [%s] %s: %r\n      ~ %s: %r" % (why, tool, e, qid, q))
 
 

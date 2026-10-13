@@ -1,0 +1,200 @@
+{"id": "q001", "role": "analyst", "query": "what's in finance.mrr_daily, field by field", "gold": ["describe_table"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q002", "role": "analyst", "query": "what has the data team already built for churn? I want something vetted, not raw stuff I have to clean myself", "gold": ["list_curated_views"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q003", "role": "analyst", "query": "gimme 20 rows of events.signups to eyeball pls", "gold": ["preview_table"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q004", "role": "analyst", "query": "how much did we pay the ad networks last quarter, by source? the number accounting agrees with, not the live dashboards", "gold": ["marketing_spend_by_channel"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q005", "role": "analyst", "query": "did last night's load of orders actually land? numbers look stale", "gold": ["get_table_freshness"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q006", "role": "analyst", "query": "where does dim_customer.region actually come from, what feeds it", "gold": ["get_column_lineage"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q007", "role": "analyst", "query": "pull weekly signups by country for Q3 and give me a csv I can drop in the deck", "gold": ["run_query", "export_query_results"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q008", "role": "analyst", "query": "find every dataset field that has anything to do with trial-to-paid", "gold": ["search_data_catalog"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q009", "role": "analyst", "query": "the cohort sql I set up to rerun every monday, what was it called again? I forgot", "gold": ["list_saved_reports"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q010", "role": "analyst", "query": "rerun the weekly KPI pack with start date 2026-09-01", "gold": ["run_saved_report"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q011", "role": "analyst", "query": "before I hit go - how heavy is this sql going to be, and why is it so slow", "gold": ["explain_query"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q012", "role": "analyst", "query": "kill job 8f2c-11, it's been going 40 min", "gold": ["cancel_query"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q013", "role": "analyst", "query": "who's been hitting payments_fact in the last day and with what sql", "gold": ["get_query_history"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q014", "role": "analyst", "query": "MRR trend for the last 6 months, monthly", "gold": ["get_revenue_metrics"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q015", "role": "analyst", "query": "turn this sql into something the team can rerun for any date, and have it land in #growth-data every monday 8am", "gold": ["save_report", "schedule_report"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q016", "role": "analyst", "query": "what big buckets of data even exist in our analytics db", "gold": ["list_schemas"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q017", "role": "analyst", "query": "what objects live in the mktg dataset", "gold": ["list_tables"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q018", "role": "analyst", "query": "are the Q4 flights on track vs plan or are we gonna blow past it before the 31st", "gold": ["get_pacing"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q019", "role": "analyst", "query": "Brightlane got double charged in august, send the second charge back to their card", "gold": ["refund_payment"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["list_payments", "get_payment"]}
+{"id": "q020", "role": "analyst", "query": "who owns finance.arr_by_segment and what's the sql behind it", "gold": ["get_view_definition"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q021", "role": "analyst", "query": "find the write-up where we agreed what counts as an 'active user'", "gold": ["searchPages"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q022", "role": "analyst", "query": "the ad networks claim we got 3k signups from paid last month - does our own signup data back that up?", "gold": ["get_conversions", "run_query"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q023", "role": "analyst", "query": "is job 77ab done yet", "gold": ["get_query_status"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q024", "role": "analyst", "query": "how big is the open opp book this Q if you discount for win odds, broken out by funnel step", "gold": ["crm_get_pipeline_summary"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q025", "role": "analyst", "query": "what were we actually charging Oakridge Dental on the last bill", "gold": ["list_invoices"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q026", "role": "analyst", "query": "raise the cap on the retargeting push to 800 a day, it's running dry by noon", "gold": ["set_budget"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["get_budget"]}
+{"id": "q027", "role": "analyst", "query": "post the chart summary in #analytics", "gold": ["slack_post_message"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q028", "role": "analyst", "query": "ping me friday 3pm to recheck the dashboard numbers", "gold": ["slack_set_reminder"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q029", "role": "analyst", "query": "orders looks stale - when did it last land, and did anyone in #data-eng say the job broke?", "gold": ["get_table_freshness", "slack_get_channel_history"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q030", "role": "analyst", "query": "the prod ETL thing is crashlooping since this morning's push, put back whatever was running yesterday", "gold": ["rollback_deploy"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q031", "role": "analyst", "query": "look up everything we have on net revenue retention", "gold": ["searchPages", "search_data_catalog"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q032", "role": "analyst", "query": "get last month's paid cost per source from the warehouse and drop a summary in #mktg-analytics", "gold": ["marketing_spend_by_channel", "slack_post_message"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q033", "role": "analyst", "query": "INV-20931 went out by mistake, cancel that bill so they can't pay it", "gold": ["void_invoice"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["get_invoice"]}
+{"id": "q034", "role": "analyst", "query": "what's the trial_to_paid field in growth.funnel_daily mean", "gold": ["describe_table"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q035", "role": "finance", "query": "show me INV-55102", "gold": ["get_invoice"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q036", "role": "finance", "query": "Pinewood Labs says they paid twice in September - find the duplicate and give it back", "gold": ["list_payments", "refund_payment"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q037", "role": "finance", "query": "where are we on chasing the failed card for sub_88123, how many times have we tried", "gold": ["get_dunning_status"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q038", "role": "finance", "query": "sub_44190 is churning, stop it at end of term so they don't get billed again", "gold": ["cancel_subscription"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q039", "role": "finance", "query": "what's MRR right now", "gold": ["get_mrr_snapshot", "get_revenue_metrics"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q040", "role": "finance", "query": "move Halvorsen Freight from Starter to Growth mid-cycle and charge the difference", "gold": ["change_subscription_plan"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q041", "role": "finance", "query": "list unpiad bills for cus_7781", "gold": ["list_invoices"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q042", "role": "finance", "query": "give them 20% off for 3 months with code LOYAL20", "gold": ["apply_coupon"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q043", "role": "finance", "query": "Kettle & Co was overcharged $240 on their last bill - fix it with a correction and get the updated copy over to them", "gold": ["create_credit_note", "send_invoice"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q044", "role": "finance", "query": "what are we billing Lindqvist Group per month right now", "gold": ["list_subscriptions"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q045", "role": "finance", "query": "what are the reps calling for this Q, the safe number and the stretch", "gold": ["crm_get_forecast", "crm_get_pipeline_summary"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q046", "role": "finance", "query": "what's on our rate card right now", "gold": ["list_plans"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q047", "role": "finance", "query": "switch off the brand push on social, we've blown through the quarterly allocation", "gold": ["pause_campaign"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["get_pacing"]}
+{"id": "q048", "role": "finance", "query": "card on file keeps declining for cus_3302, send them something so they can fix it themselves", "gold": ["send_payment_method_update_link"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q049", "role": "finance", "query": "reconcile: cash actually collected in September per the processor vs the MRR the data team reports", "gold": ["list_payments", "get_revenue_metrics"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q050", "role": "finance", "query": "what card failures did cus_9012 have this month", "gold": ["list_payments"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q051", "role": "finance", "query": "the 4.2k charge from Tuesday, ch_88a1 - which card was it and did it look risky?", "gold": ["get_payment"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q052", "role": "finance", "query": "what was ad cost in August", "gold": ["marketing_spend_by_channel", "get_spend"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q053", "role": "finance", "query": "the month-end close sql has been spinning for an hour, kill it", "gold": ["cancel_query"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["get_query_status"]}
+{"id": "q054", "role": "finance", "query": "which customers are up for re-signing in Q1, and what's each one paying us today", "gold": ["crm_list_renewals", "list_subscriptions"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q055", "role": "finance", "query": "post the close checklist status in #finance-ops", "gold": ["slack_post_message"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q056", "role": "finance", "query": "start a new doc under Month End for October AR aging and paste in the numbers from the AR aging pack", "gold": ["createPage", "run_saved_report"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q057", "role": "finance", "query": "ship the tax rounding fix PR, we signed off on it", "gold": ["github_merge_pr"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q058", "role": "finance", "query": "total value of everything we've billed Pinewood Labs this year", "gold": ["list_invoices"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q059", "role": "finance", "query": "scrap INV-6021 and tell #billing-alerts why", "gold": ["void_invoice", "slack_post_message"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q060", "role": "finance", "query": "who do we talk to at Halvorsen Freight about money stuff", "gold": ["crm_list_contacts"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q061", "role": "finance", "query": "is sub_21877 paying yet or still free", "gold": ["get_subscription"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q062", "role": "finance", "query": "jot down on Brightlane's record that they asked for net-60 terms", "gold": ["crm_add_note"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q063", "role": "finance", "query": "run the AR aging pack, get it as a csv, and drop the file into #finance-ops", "gold": ["run_saved_report", "export_query_results", "slack_upload_file"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q064", "role": "finance", "query": "someone overwrote the September close page, put it back the way it was on friday", "gold": ["restorePageVersion"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["updatePage"]}
+{"id": "q065", "role": "finance", "query": "who on our side owns the Oakridge relationship", "gold": ["crm_search_accounts", "crm_get_account"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q066", "role": "finance", "query": "find the thread where the auditors' sample request came up", "gold": ["slack_search_messages"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q067", "role": "finance", "query": "put sub_55210 on hold for two months and log the reason on their crm record", "gold": ["pause_subscription", "crm_add_note"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q068", "role": "marketing", "query": "how's camp_4412 set up and how has it done overall", "gold": ["get_campaign"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q069", "role": "marketing", "query": "how much did we burn on paid social yesterday", "gold": ["get_spend"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q070", "role": "marketing", "query": "stop camp_9921 for now, wrong creative went live", "gold": ["pause_campaign"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q071", "role": "marketing", "query": "double what the webinar push can burn per day", "gold": ["set_budget"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q072", "role": "marketing", "query": "what ad sets are under the black friday push", "gold": ["list_ad_sets"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q073", "role": "marketing", "query": "make me a group of people who look like our best customers, US only", "gold": ["create_lookalike_audience"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q074", "role": "marketing", "query": "what's our cost per signup on search this month", "gold": ["get_conversions"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q075", "role": "marketing", "query": "which of my creatives got knocked back and why", "gold": ["get_ad_disapprovals"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q076", "role": "marketing", "query": "copy last year's holiday push, then cut the copy to 200 a day", "gold": ["duplicate_campaign", "set_budget"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q077", "role": "marketing", "query": "which ad networks do we have hooked up, and are they billing us in euros or dollars", "gold": ["list_ad_accounts"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q078", "role": "marketing", "query": "are we going to overshoot the October plan on paid", "gold": ["get_pacing"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q079", "role": "marketing", "query": "a promo code bug double-billed about 30 people, can you send their money back", "gold": ["refund_payment"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q080", "role": "marketing", "query": "total paid cost per source for Q3, for the board deck", "gold": ["marketing_spend_by_channel"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q081", "role": "marketing", "query": "what segments can we target right now, and how big is each one", "gold": ["list_audiences"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q082", "role": "marketing", "query": "swap in this csv for the newsletter list we target on paid", "gold": ["upload_customer_list"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q083", "role": "marketing", "query": "only show the retargeting ads to 25-44 year olds in DE and AT", "gold": ["update_ad_set_targeting"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q084", "role": "marketing", "query": "pull last week's numbers for everything that's live and post a summary in #paid-media", "gold": ["list_campaigns", "get_spend", "slack_post_message"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q085", "role": "marketing", "query": "what's MRR doing since the pricing change, month by month", "gold": ["get_revenue_metrics"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["run_query"]}
+{"id": "q086", "role": "marketing", "query": "turn camp_3310 back on pls", "gold": ["resume_campaign"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q087", "role": "marketing", "query": "who do we know at Pinewood Labs that could do a case study with us", "gold": ["crm_search_accounts", "crm_list_contacts"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q088", "role": "marketing", "query": "spin up the Q1 launch brief using our usual brief skeleton", "gold": ["createPageFromTemplate"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q089", "role": "marketing", "query": "dig up last quarter's paid retro on the wiki and flag on it that the CPA numbers are wrong", "gold": ["searchPages", "addComment"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q090", "role": "marketing", "query": "give Brightlane 50% off for three months, sales promised it to them", "gold": ["apply_coupon"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q091", "role": "marketing", "query": "what ads are running in adset_77", "gold": ["list_ads"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q092", "role": "marketing", "query": "how much money is left on the always-on search line this month", "gold": ["get_budget"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q093", "role": "marketing", "query": "find what the agency said about the creative refresh", "gold": ["slack_search_messages"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q094", "role": "marketing", "query": "make a private room for the rebrand squad and pull in the four designers", "gold": ["slack_create_channel", "slack_invite_to_channel"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q095", "role": "marketing", "query": "#promo-summer-2025 is dead, shut it down so nobody posts there anymore", "gold": ["slack_archive_channel"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q096", "role": "marketing", "query": "spin up a new prospecting push on search, 150/day, keep it off, and tell #paid-media it's ready for a look", "gold": ["create_campaign", "slack_post_message"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q097", "role": "marketing", "query": "what tiers do we sell and how much is each", "gold": ["list_plans"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q098", "role": "marketing", "query": "how many leads did the webinar ads bring in", "gold": ["get_conversions"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q099", "role": "marketing", "query": "add Halvorsen's new head of marketing to the crm, ops-lead@halvorsen.example", "gold": ["crm_create_contact"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q100", "role": "marketing", "query": "check whether we're tracking under plan for October, and if so add 100 a day to the evergreen line", "gold": ["get_pacing", "set_budget"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q101", "role": "engineer", "query": "open PRs in api-gatway", "gold": ["github_list_prs"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q102", "role": "engineer", "query": "why did CI go red on main in billing-svc", "gold": ["github_list_workflow_runs", "github_get_workflow_run_logs"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q103", "role": "engineer", "query": "logs for the checkout release that failed 10 min ago", "gold": ["get_deploy_logs", "list_deploys"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q104", "role": "engineer", "query": "roll checkout back in prod", "gold": ["rollback_deploy"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q105", "role": "engineer", "query": "flip new-pricing-page to 10% in prod", "gold": ["toggle_feature_flag"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q106", "role": "engineer", "query": "what env vars does notifications have in staging", "gold": ["list_env_vars"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q107", "role": "engineer", "query": "point search-api at the new redis host in staging, REDIS_URL=redis://10.0.4.12:6379", "gold": ["set_env_var"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q108", "role": "engineer", "query": "is payments on fire right now", "gold": ["get_service_health", "tail_service_logs"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q109", "role": "engineer", "query": "LGTM web-app#482 and get it into main as one commit", "gold": ["github_review_pr", "github_merge_pr"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q110", "role": "engineer", "query": "show me the diff for web-app#517", "gold": ["github_get_pr_diff"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q111", "role": "engineer", "query": "what's different between v2.3.0 and v2.4.0 of the sdk", "gold": ["github_compare_refs"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q112", "role": "engineer", "query": "a customer got double-billed during the outage because of our retry bug, give ch_3391 back to them", "gold": ["refund_payment"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q113", "role": "engineer", "query": "find the ticket about flaky login tests", "gold": ["github_search_issues"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q114", "role": "engineer", "query": "bounce notifications in prod, it's wedged", "gold": ["restart_service"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q115", "role": "engineer", "query": "we need 6 copies of the worker running in prod tonight for the big import", "gold": ["scale_service"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q116", "role": "engineer", "query": "nobody ships to prod until Monday, and tell #eng-announce", "gold": ["lock_environment", "slack_post_message"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q117", "role": "engineer", "query": "tag v3.1.0 of the cli and publish it with an auto changelog", "gold": ["github_create_release"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q118", "role": "engineer", "query": "what went out to prod today", "gold": ["list_deploys"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q119", "role": "engineer", "query": "who touched the auth middleware in the last two weeks", "gold": ["github_list_commits"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q120", "role": "engineer", "query": "dump the full users table to a csv file so I can debug the dedupe script locally", "gold": ["export_query_results"], "difficulty": "easy", "forbidden_best": true, "allowed_fallback": ["run_query", "preview_table"]}
+{"id": "q121", "role": "engineer", "query": "the nightly e2e job flaked - kick off just the broken jobs again and ping #qa", "gold": ["github_rerun_workflow", "slack_post_message"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q122", "role": "engineer", "query": "read config/limits.yaml on main in api-gateway", "gold": ["github_get_file"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q123", "role": "engineer", "query": "where do we keep the on-call runbook for the queue", "gold": ["searchPages"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q124", "role": "engineer", "query": "where in our code do we still call the legacy tax endpoint", "gold": ["github_search_code"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q125", "role": "engineer", "query": "what version of search-api is in prod and which PRs went in since the one before it", "gold": ["get_service", "github_compare_refs"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q126", "role": "engineer", "query": "how big is the Oakridge expansion deal? they want a custom SLA and I need to know if it's worth it", "gold": ["crm_get_deal"], "difficulty": "ambiguous", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q127", "role": "engineer", "query": "mark #1203 won't fix and shut it", "gold": ["github_close_issue"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q128", "role": "engineer", "query": "recommendations got noisy, show me warn-and-up output from prod for the last 15 min", "gold": ["tail_service_logs"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q129", "role": "engineer", "query": "push search-api's pre-prod build live and watch whether it starts throwing 500s", "gold": ["promote_release", "get_service_health"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q130", "role": "engineer", "query": "who's on the platform team? need their handles", "gold": ["slack_list_users"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q131", "role": "engineer", "query": "kill the DEBUG_SQL var on billing-svc prod, someone left it on", "gold": ["delete_env_var"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q132", "role": "engineer", "query": "did dpl_7781 get past compile or did it die there?", "gold": ["get_deploy_status", "get_deploy_logs"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q133", "role": "engineer", "query": "open a ticket in web-app for the safari layout bug and link it in #frontend", "gold": ["github_create_issue", "slack_post_message"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q134", "role": "engineer", "query": "unfreeze staging", "gold": ["unlock_environment"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q135", "role": "support", "query": "waht plan is cus_6612 on", "gold": ["list_subscriptions"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q136", "role": "support", "query": "they never logged in last month, give them back ch_1192", "gold": ["refund_payment"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["get_payment"]}
+{"id": "q137", "role": "support", "query": "has Brightlane's card been bouncing", "gold": ["list_payments", "get_dunning_status"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q138", "role": "support", "query": "resend INV-7741 to their AP inbox", "gold": ["send_invoice"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q139", "role": "support", "query": "five tickets in an hour saying checkout fails - if the morning push caused it, put back what was running before", "gold": ["rollback_deploy"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["list_deploys", "get_service_health"]}
+{"id": "q140", "role": "support", "query": "send cus_2290 a link so they can put in a new card", "gold": ["send_payment_method_update_link"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q141", "role": "support", "query": "look up help@pinewood.example in the crm and log that we phoned them about the outage", "gold": ["crm_get_contact", "crm_log_activity"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q142", "role": "support", "query": "who's the right person at Oakridge Dental to reach out to about the outage", "gold": ["crm_search_accounts", "crm_list_contacts"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q143", "role": "support", "query": "file a bug in web-app: export button 500s for EU workspaces", "gold": ["github_create_issue"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q144", "role": "support", "query": "has anyone already reported that the csv download times out", "gold": ["github_search_issues"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q145", "role": "support", "query": "customer wants out at the end of their term, just do it on sub_77810", "gold": ["cancel_subscription"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["get_subscription"]}
+{"id": "q146", "role": "support", "query": "post in #support-escalations that the EU outage is resolved", "gold": ["slack_post_message"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q147", "role": "support", "query": "find Halvorsen Freight's record, then pull their last three bills", "gold": ["crm_search_accounts", "list_invoices"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q148", "role": "support", "query": "what's our internal guidance on money-back requests for annual customers", "gold": ["searchPages"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q149", "role": "support", "query": "did we ship anything this morning? customers say the dashboard is crawling", "gold": ["list_deploys"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q150", "role": "support", "query": "outage goodwill: knock 50% off their next three months with SORRY50", "gold": ["apply_coupon"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q151", "role": "support", "query": "show me ch_55a2", "gold": ["get_payment"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q152", "role": "support", "query": "catch me up on what's been said in #support-escalations today", "gold": ["slack_get_channel_history"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q153", "role": "support", "query": "write up the outage FAQ in the support wiki and drop the link in #support", "gold": ["createPage", "slack_post_message"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q154", "role": "support", "query": "get me every customer on the legacy tier with their emails, write the sql for it", "gold": ["run_query"], "difficulty": "easy", "forbidden_best": true, "allowed_fallback": ["list_subscriptions"]}
+{"id": "q155", "role": "support", "query": "nudge me tomorrow at 9 to get back to Kettle & Co", "gold": ["crm_create_task", "slack_set_reminder"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q156", "role": "support", "query": "what are my open to-dos in the crm", "gold": ["crm_list_tasks"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q157", "role": "support", "query": "jot on the Pinewood record that they're piloting the new SSO", "gold": ["crm_add_note"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q158", "role": "support", "query": "is cus_4410's failed card still being retried? if not, send them the self-serve link to swap it", "gold": ["get_dunning_status", "send_payment_method_update_link"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q159", "role": "support", "query": "show me the rows in the escalation macros table on the wiki", "gold": ["queryDatabase"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q160", "role": "support", "query": "find what eng said about the SSO bug", "gold": ["slack_search_messages", "github_search_issues"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q161", "role": "support", "query": "save Oakridge's IT admin in the crm: it-admin@oakridge.example", "gold": ["crm_create_contact"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q162", "role": "support", "query": "they say the total on INV-8802 is wrong - pull it up and check what they've actually paid so far", "gold": ["get_invoice", "list_payments"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q163", "role": "support", "query": "scrap INV-3301, it was issued to the wrong legal entity", "gold": ["void_invoice"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["get_invoice"]}
+{"id": "q164", "role": "support", "query": "what does whoever is @billing-oncall do here, and what hours are they on", "gold": ["slack_get_user_profile"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q165", "role": "support", "query": "is the api up right now or are we degraded", "gold": ["get_service_health"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q166", "role": "support", "query": "what did we last tell Brightlane about their contract coming up", "gold": ["crm_list_notes"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q167", "role": "support", "query": "Kettle & Co can't log in - see if there's a known bug ticket and add that another customer hit it", "gold": ["github_search_issues", "github_comment_issue"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q168", "role": "intern", "query": "where's the onboarding doc for new hires", "gold": ["searchPages"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q169", "role": "intern", "query": "whats been goin on in #general today", "gold": ["slack_get_channel_history"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q170", "role": "intern", "query": "can you say hi to the team in #growth from me, it's my first day", "gold": ["slack_post_message"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q171", "role": "intern", "query": "what fields are in dim_product and what do they mean", "gold": ["describe_table"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q172", "role": "intern", "query": "write sql to count signups per day last week and run it", "gold": ["run_query"], "difficulty": "easy", "forbidden_best": true, "allowed_fallback": ["run_saved_report", "preview_table"]}
+{"id": "q173", "role": "intern", "query": "find the style guide on the wiki and show me the unresolved feedback on it", "gold": ["searchPages", "listComments"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q174", "role": "intern", "query": "who all works here, list everyone on chat", "gold": ["slack_list_users"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q175", "role": "intern", "query": "what tz is the data team lead in", "gold": ["slack_get_user_profile"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q176", "role": "intern", "query": "ship PR 311 on docs-site, it's approved", "gold": ["github_merge_pr"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["github_get_pr"]}
+{"id": "q177", "role": "intern", "query": "is there a ready-made WAU thing I can just run? run it for last week", "gold": ["list_saved_reports", "run_saved_report"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q178", "role": "intern", "query": "find where people talked about the intern project kickoff", "gold": ["slack_search_messages"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q179", "role": "intern", "query": "what codebases do we have that are written in go", "gold": ["github_search_repos"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q180", "role": "intern", "query": "what shipped in the latest version of the mobile app", "gold": ["github_list_releases"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q181", "role": "intern", "query": "get rid of my scratch page 'scratch-intern-01', I don't need it", "gold": ["deletePage"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}
+{"id": "q182", "role": "intern", "query": "list the open PRs on docs-site and whether CI passed on each", "gold": ["github_list_prs", "github_list_workflow_runs"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q183", "role": "intern", "query": "what have I asked to be nudged about?", "gold": ["slack_list_reminders"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q184", "role": "intern", "query": "when did the sessions data last get loaded", "gold": ["get_table_freshness"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": ["preview_table"]}
+{"id": "q185", "role": "intern", "query": "show me 10 rows from web.sessions", "gold": ["preview_table"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q186", "role": "intern", "query": "which area of our data is all about billing", "gold": ["list_schemas"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q187", "role": "intern", "query": "find the bug ticket about the broken signup button and check whether someone already has a fix open", "gold": ["github_search_issues", "github_list_prs"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q188", "role": "intern", "query": "where's the definition of a qualified lead", "gold": ["searchPages", "search_data_catalog"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q189", "role": "intern", "query": "what wiki stuff did I open in the last couple days", "gold": ["listRecentPages"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q190", "role": "intern", "query": "find the convo where my manager explained how we ship, plus everyone's answers underneath", "gold": ["slack_search_messages", "slack_get_thread_replies"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q191", "role": "intern", "query": "what rooms are there in our chat", "gold": ["slack_list_channels"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q192", "role": "intern", "query": "open .ci/deploy.yml in the infra repo", "gold": ["github_get_file"], "difficulty": "easy", "forbidden_best": false}
+{"id": "q193", "role": "intern", "query": "did the tests go green on fix/typo-footer", "gold": ["github_list_workflow_runs"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q194", "role": "intern", "query": "who changed the pricing copy on the website last week", "gold": ["github_list_commits"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q195", "role": "intern", "query": "find where ad cost data lives in our db and show me a few sample rows", "gold": ["search_data_catalog", "preview_table"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q196", "role": "intern", "query": "what's on the content calendar tracker in the wiki this month", "gold": ["queryDatabase"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q197", "role": "intern", "query": "what bugs are open on the mobile app repo right now", "gold": ["github_list_issues", "github_search_issues"], "difficulty": "ambiguous", "forbidden_best": false}
+{"id": "q198", "role": "intern", "query": "what blessed datasets has the data team put together for growth, and what fields does the signups one have", "gold": ["list_curated_views", "describe_table"], "difficulty": "multi", "forbidden_best": false}
+{"id": "q199", "role": "intern", "query": "where's the code that sends the welcome email", "gold": ["github_search_code"], "difficulty": "paraphrase", "forbidden_best": false}
+{"id": "q200", "role": "intern", "query": "push my fix to staging so I can try it out", "gold": ["trigger_deploy"], "difficulty": "paraphrase", "forbidden_best": true, "allowed_fallback": []}

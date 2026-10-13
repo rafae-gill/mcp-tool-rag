@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-tool-router"
+version = "0.0.1"
+description = "Permission-aware tool search for MCP: only the relevant tools each person is allowed to use."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Muhammad Rafae Gill" }]
+dependencies = ["mcp-gatekeeper @ git+https://github.com/rafae-gill/mcp-gatekeeper"]
+
+[project.optional-dependencies]
+embeddings = ["fastembed>=0.4", "numpy"]
+dev = ["pytest>=8", "fastembed>=0.4", "numpy"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["mcp_tool_router"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,1578 @@
+{
+  "run_query": [
+    "can you count how many orders had a promo code applied in august, straight from the orders table",
+    "run this select for me: select region, count(*) from events.signups group by 1",
+    "how many distinct users logged in yesterday? just hit the raw tables",
+    "join the trials table to the accounts table and give me the ones that converted within 14 days",
+    "I need an ad hoc pull of every refund over 500 bucks in the last 90 days with the user id",
+    "quick one: avg basket size by weekday from the raw transactions data",
+    "the growth team wants a one-off breakdown of activation rate by signup source, can you write something against our data and execute it",
+    "grab me the top 20 skus by units sold this week from the sales fact table"
+  ],
+  "explain_query": [
+    "before I hit go on this monster join, how much data is it gonna scan?",
+    "estimate the cost of this select without actually running it",
+    "will this statement do a full table scan? show me the plan only",
+    "dry run this against the events table so I know the byte count",
+    "why might this be slow - show the execution plan, don't execute it",
+    "we have a scan budget, check how many GB this would read first",
+    "is my partition filter actually being used? check the plan",
+    "sanity check the footprint of this statement before I put it behind a dashboard"
+  ],
+  "cancel_query": [
+    "kill that job I started, it's been going forever",
+    "stop the runaway select on the clickstream table",
+    "abort job 8812, I wrote the join wrong",
+    "oops I forgot the date filter, please kill it before it eats the scan budget",
+    "terminate my long-running data pull, I don't need it anymore",
+    "can you stop the thing that's still crunching from 20 min ago",
+    "halt the backfill select Priya kicked off, it's hogging slots",
+    "never mind that data pull, stop it mid-flight"
+  ],
+  "get_query_status": [
+    "is my big pull done yet?",
+    "how far along is job 4471",
+    "check whether the job I submitted is still queued or actually running",
+    "did that long select fail or is it still going? it's been 12 minutes",
+    "how many bytes has my running job processed so far",
+    "any update on the async data pull from earlier",
+    "has the heavy aggregation I kicked off before lunch completed?",
+    "elapsed time on the job you started for me?"
+  ],
+  "list_schemas": [
+    "what datasets do we have in the data warehouse at all",
+    "show me the top-level groupings of data in our analytics db",
+    "which schemas exist besides finance and marketing?",
+    "new here, what are the main data areas I can poke at",
+    "list the datasets in the raw ingestion database",
+    "is there a separate dataset for the mobile app data?",
+    "give me an overview of the namespaces in the analytics database",
+    "what top-level folders of tables are there"
+  ],
+  "list_tables": [
+    "what tables are in the product schema",
+    "list everything in marketing that starts with fct_",
+    "is there a table for subscriptions in the finance dataset?",
+    "show me all the views under the sales schema",
+    "which tables live in the staging schema",
+    "find tables named like %order% in the ecommerce schema",
+    "I need to know what objects exist under the support dataset before I build anything",
+    "enumerate the tables in raw_events"
+  ],
+  "describe_table": [
+    "what columns does finance.invoices_daily have",
+    "is customer_id nullable in the orders table?",
+    "give me the column types for product.sessions",
+    "what does the amt_net field in the payments table mean? check its column description",
+    "I need the layout of the users table before I write a join",
+    "list fields and data types for marketing.leads",
+    "does the accounts table have a created_at column or is it called something else",
+    "show the structure of that churn view, column by column"
+  ],
+  "preview_table": [
+    "show me a few sample rows from product.feature_usage",
+    "what does the data in the leads table actually look like? first 10 rows is fine",
+    "peek at the top of the shipments table",
+    "eyeball 50 rows from marketing.utm_touches",
+    "I don't know SQL, just let me see some rows from the signups table",
+    "quick glance at the contents of finance.fx_rates",
+    "dump a handful of records from that new table so I can sanity check it",
+    "give me a sample of the support_tickets table"
+  ],
+  "list_curated_views": [
+    "which numbers are the official ones the data team maintains for finance?",
+    "what blessed views exist for marketing reporting",
+    "I'm building a board slide, where are the vetted, documented datasets I should use instead of raw tables",
+    "list the trusted product metrics views",
+    "what certified sales views do we have",
+    "is there an approved source-of-truth view for anything finance related",
+    "show me the data team's maintained business views",
+    "what are the gold-standard reporting tables, not the raw stuff"
+  ],
+  "get_view_definition": [
+    "how is marketing.attributed_signups calculated? show me the SQL behind it",
+    "who owns the finance.bookings view and when was it last changed",
+    "what logic sits behind the active_users view",
+    "the churn view changed numbers last week, when was it last modified?",
+    "I want to see the underlying select for product.retention_weekly",
+    "how does that view define an 'active' customer, show me its code",
+    "who do I ping about the sales.pipeline_daily view? need its owner",
+    "reverse-engineer the revenue view for me - what's the source code"
+  ],
+  "marketing_spend_by_channel": [
+    "what did we spend on paid social each week last quarter, the finance-reconciled number",
+    "for the monthly board deck, total paid media spend by channel for Jan through Sep",
+    "reported spend on video by month this year",
+    "the CFO wants the official ad spend split by channel before Friday",
+    "how much did search cost us per day in July, the numbers that match the books",
+    "paid spend by channel for last month for the marketing review",
+    "historical display spend broken out monthly since 2025",
+    "give me the reconciled media cost by channel, not the live platform numbers"
+  ],
+  "get_revenue_metrics": [
+    "what was our ARR at the end of each quarter last year",
+    "net new MRR by month for 2025",
+    "how much expansion revenue did enterprise customers generate in H1",
+    "show the churned MRR trend weekly since march",
+    "board wants historical recurring revenue numbers split by segment",
+    "what did MRR look like a year ago vs now in the official finance numbers",
+    "chart expansion vs contraction MRR over the past 18 months",
+    "historical recurring revenue for SMB from jan to jun"
+  ],
+  "list_saved_reports": [
+    "what saved reports do I have access to",
+    "is there already a report someone built for weekly signups?",
+    "show me all reports tagged retention",
+    "list the reports that Dana owns",
+    "before I write this from scratch, has anyone saved a churn report?",
+    "what parameterized reports exist for the finance team",
+    "find the saved report we use for the monday metrics",
+    "browse existing named reports"
+  ],
+  "run_saved_report": [
+    "run the weekly signups report but for the EMEA region",
+    "rerun report 223 with start date set to the first of the month",
+    "can you execute the saved cohort report for September",
+    "kick off the 'top accounts by usage' report with limit 50",
+    "refresh the churn report Lena set up, same params as last time",
+    "pull the numbers from our existing funnel report for last week",
+    "run that saved retention report again but change the cohort to Q2",
+    "execute the board metrics report"
+  ],
+  "save_report": [
+    "save this query as 'Weekly Active Teams' so the team can reuse it",
+    "store this SQL with a date parameter so I can rerun it later",
+    "turn what we just wrote into a named report tagged growth",
+    "keep this pull around as a reusable report called trial conversions",
+    "make this a saved report with {{region}} as an input",
+    "I'll need this every month, can you save it with a description",
+    "bookmark this select as a report for the finance folks",
+    "persist this as a template report with start and end date params"
+  ],
+  "get_query_history": [
+    "what has Omar been running against the warehouse today",
+    "who's been hitting the orders table so hard this week",
+    "show recent statements against finance.mrr_daily and how long they took",
+    "which of my queries from yesterday failed",
+    "find the select I ran last tuesday, I lost it",
+    "what were the most expensive scans run since monday",
+    "audit who has touched the payroll table in the last 7 days",
+    "list the statements I executed this morning with bytes scanned"
+  ],
+  "export_query_results": [
+    "give me those results as a CSV I can download",
+    "export the finished job to parquet",
+    "I need a download link for the output of job 9932",
+    "dump the result set to a file I can open in excel",
+    "send me a csv of the rows we just got back",
+    "can you turn that output into a parquet file for the data science folks",
+    "the result is too big to paste here, write it to a file",
+    "I want to share the full output with finance, give me a link to the csv"
+  ],
+  "schedule_report": [
+    "have the weekly revenue report emailed to me every monday at 8",
+    "run the pipeline report every morning and drop it into #sales-ops",
+    "set up the churn report to go to the leadership list on the first of each month",
+    "can you automate the funnel report to post daily at 9 UTC in #growth",
+    "send the saved signups report to ana@example.com every friday",
+    "recurring delivery of report 118, weekly, to the finance channel",
+    "I'm tired of running this report by hand, put it on a schedule",
+    "every weekday at 7 am, mail the ops report to the on-call lead"
+  ],
+  "get_table_freshness": [
+    "when did the orders table last load?",
+    "is the events data up to date or is it stale",
+    "dashboard looks flat since yesterday - did the sessions table stop refreshing?",
+    "is finance.mrr_daily past its SLA",
+    "how current is the data in the leads table",
+    "check if last night's load of the billing table succeeded",
+    "row count and last update time for product.signups",
+    "are we looking at stale data? check the marketing touches table"
+  ],
+  "search_data_catalog": [
+    "where do we keep anything about NPS scores",
+    "which table has a column for coupon code",
+    "find any dataset mentioning trial_end",
+    "is there a field somewhere for the customer's industry",
+    "search for tables related to refunds",
+    "I need data on app crashes, where would that live",
+    "which column holds the utm campaign? look across all tables",
+    "anything in our data with 'lifetime value' in the column notes"
+  ],
+  "get_column_lineage": [
+    "where does the net_revenue column in finance.bookings come from",
+    "if I drop the region column in raw.accounts what breaks downstream",
+    "trace the origin of the is_active flag in the users table",
+    "what dashboards and tables depend on users.plan_tier",
+    "the arr field looks wrong - what upstream sources feed it?",
+    "map the upstream for marketing.attributed_signups.channel",
+    "impact analysis: who consumes the email column in crm_contacts",
+    "show me the graph of what feeds and what uses orders.discount_amount"
+  ],
+  "list_campaigns": [
+    "what campaigns are live right now across all our ad accounts",
+    "show me every paused campaign on social",
+    "find the campaigns with 'black friday' in the name",
+    "list all our search ad campaigns",
+    "which video campaigns do we have running",
+    "give me an inventory of all ad campaigns, active or not",
+    "do we have anything running on display at the moment?",
+    "list campaigns containing 'retargeting'"
+  ],
+  "get_campaign": [
+    "what's the bid strategy on the spring promo campaign",
+    "pull up campaign 55102 - objective, schedule, how it's done overall",
+    "when is the back-to-school campaign scheduled to end",
+    "is the brand awareness push set to max conversions or manual cpc",
+    "lifetime results for the webinar lead gen campaign",
+    "give me the details of the holiday retargeting campaign",
+    "what objective did we set on the new app installs campaign",
+    "check the settings on campaign 7781 before I touch it"
+  ],
+  "create_campaign": [
+    "set up a new traffic campaign called Autumn Sale with a 200/day budget",
+    "spin up a lead gen campaign in the EU ad account, don't launch it yet",
+    "I need a fresh awareness campaign for the product launch next month",
+    "create a sales-objective campaign for the new bundle, 150 a day",
+    "build a new ad campaign from scratch for the webinar signup push",
+    "start a new campaign in account 3321 for retargeting cart abandoners",
+    "can you draft a campaign for the conference, I'll review before it goes live",
+    "new ad campaign please, objective leads, budget 75 daily"
+  ],
+  "pause_campaign": [
+    "stop the summer promo ads immediately, the discount code is broken",
+    "turn off the display campaign that's burning money",
+    "halt campaign 4410 for now",
+    "the landing page is down, kill the traffic campaign until it's fixed",
+    "pause the black friday ads, legal flagged the copy",
+    "switch off the brand video ads over the weekend",
+    "stop serving the retargeting ads now",
+    "we're out of stock, take the app install ads offline"
+  ],
+  "resume_campaign": [
+    "turn the summer promo back on",
+    "restart the paused search campaign now that the page is fixed",
+    "unpause campaign 4410",
+    "get the retargeting ads running again",
+    "we're back in stock, switch the shopping ads back on",
+    "reactivate the brand video campaign we stopped last week",
+    "legal approved the copy, the black friday ads can go live again",
+    "bring back the webinar campaign we paused"
+  ],
+  "duplicate_campaign": [
+    "clone the spring sale campaign for the autumn sale",
+    "copy the US lead gen campaign so we can run it in Canada",
+    "make a copy of campaign 9021 with all its ads, call it Q1 test",
+    "I want the same setup as the webinar campaign for next month's webinar",
+    "replicate the holiday campaign including ad groups and creatives",
+    "duplicate the brand campaign so I can test a different bid strategy",
+    "start from the existing retargeting campaign rather than building new",
+    "copy-paste the whole app install campaign structure for the android launch"
+  ],
+  "list_ad_sets": [
+    "what ad groups are under the spring sale campaign",
+    "show the ad sets in campaign 3381 and who they target",
+    "which ad sets in the lead gen campaign are paused",
+    "break down the holiday campaign into its audience groups and bids",
+    "list the targeting segments inside the retargeting campaign",
+    "how many ad sets does the brand campaign have",
+    "what's the bid on each ad group in the search campaign",
+    "list the sub-groups inside the video campaign"
+  ],
+  "update_ad_set_targeting": [
+    "narrow the ad set to 25-44 year olds",
+    "add Germany and Austria to the locations on ad set 7712",
+    "exclude the audience network placement from the retargeting ad set",
+    "target people interested in hiking and camping instead",
+    "change who sees the lookalike ad set - only the UK please",
+    "we're getting too many students, raise the minimum age to 30",
+    "remove instagram stories from where the prospecting ads show",
+    "expand the geo on the conference ad group to include the whole east coast"
+  ],
+  "list_ads": [
+    "show me the individual ads in ad set 2210 with previews",
+    "which creatives in the retargeting ad group are actually delivering",
+    "list the ads under the lookalike ad set",
+    "I want to see the creative previews for the spring ads",
+    "are any of the ads in this ad set not serving?",
+    "how many ad variations are running in the prospecting group",
+    "pull up the creatives in the video ad set so I can review copy",
+    "delivery status of each ad in ad group 5531"
+  ],
+  "get_budget": [
+    "how much budget is left on the holiday campaign",
+    "what's the daily cap on the retargeting ad set",
+    "lifetime budget for the launch campaign and how much remains",
+    "are we close to exhausting the budget on campaign 6620",
+    "what's the current daily limit on the brand search campaign",
+    "how much money remains in the webinar ad set's lifetime budget",
+    "check the ad budget settings before I ask for more",
+    "remaining spend allowance on the q4 awareness push"
+  ],
+  "set_budget": [
+    "bump the daily budget on the spring sale to 500",
+    "cut the retargeting ad set to 50 a day",
+    "set the lifetime budget of the launch campaign to 20k",
+    "the webinar campaign is working, double its daily budget",
+    "lower the spend cap on the display campaign to 100/day effective now",
+    "increase daily budget for ad set 4402 by 30 percent",
+    "reallocate: give the search campaign 300 a day",
+    "we got approval for more money, raise the video campaign budget to 1,000 daily"
+  ],
+  "get_spend": [
+    "how much have we spent on ads today so far",
+    "live spend and clicks for the spring campaign since monday",
+    "what's the cpc looking like right now on search",
+    "impressions and clicks yesterday, broken out by platform",
+    "real-time spend for all campaigns this week, I don't care if it's reconciled",
+    "how much has the black friday campaign burned in the last 3 hours",
+    "quick check on spend per campaign for the last 7 days straight from the platforms",
+    "did the new campaign actually start spending this morning?"
+  ],
+  "get_conversions": [
+    "what's the ROAS on the holiday campaign",
+    "how many leads did the webinar campaign drive last week according to the platform",
+    "cpa for the retargeting ad set on a 7-day click window",
+    "which campaign has the best return on ad spend this month",
+    "platform-attributed purchases for campaign 8890 in september",
+    "is the lookalike ad set converting? show cost per acquisition",
+    "compare 1-day view vs 7-day click conversions for the video campaign",
+    "how many signups did the app install campaign get credit for"
+  ],
+  "get_pacing": [
+    "are we on track to hit the monthly ad budget or overspending",
+    "month to date spend vs plan per campaign",
+    "projected end of month spend for the EU ad account",
+    "which campaigns are underpacing this month",
+    "will we blow through the october media plan at this rate",
+    "pacing check for last month vs what we budgeted",
+    "how far ahead of plan are we on media this month",
+    "forecast where spend lands by the 31st for each campaign"
+  ],
+  "list_audiences": [
+    "what ad audiences do we have saved",
+    "show me our custom and lookalike audiences and their sizes",
+    "do we already have a website visitors audience",
+    "how big is the cart abandoners audience",
+    "list audiences on social",
+    "which seed lists exist that I could build a lookalike from",
+    "audience inventory please",
+    "is the newsletter subscribers audience still around and how many people"
+  ],
+  "create_lookalike_audience": [
+    "build a lookalike from our top customers audience for the US",
+    "create a 1% similar audience to the purchasers list in Brazil",
+    "make an audience of people similar to our trial converters in the UK",
+    "expand reach: generate lookalikes off the newsletter list, similarity 5",
+    "I want a broader lookalike (around 8) based on the cart abandoners in Canada",
+    "find new people who resemble our best buyers in australia",
+    "seed a lookalike from audience 3091 for germany",
+    "can you model a similar-users audience from the webinar attendees"
+  ],
+  "upload_customer_list": [
+    "upload the export of paying customers as a matched audience for ads",
+    "refresh the churned customers list on the ad platforms with this csv",
+    "here's a file of emails from the event, turn it into an ad audience",
+    "sync our VIP phone numbers list to ads so we can exclude them",
+    "push this CSV of trial users into a customer-match list",
+    "update the existing 'Newsletter Subs' audience with the latest file",
+    "load these emails to create a suppression audience for our campaigns",
+    "create an ad audience from the attached spreadsheet of past buyers"
+  ],
+  "list_ad_accounts": [
+    "which ad accounts are connected",
+    "what currency is the APAC ad account in",
+    "list our ad accounts with their timezones",
+    "do we have a video platform account hooked up?",
+    "what's the account id for our social ads account",
+    "show all the ad accounts we manage and which platform each is on",
+    "how many advertising accounts are linked to this tool",
+    "I need the timezone for the EU ads account to read the reports right"
+  ],
+  "get_ad_disapprovals": [
+    "why did our new ads get rejected",
+    "any ads flagged by policy review this week",
+    "which ads are limited and what reason did the platform give",
+    "the supplement ads aren't running, were they disapproved?",
+    "list ads that failed review in the EU account",
+    "check if any creatives got knocked back for policy violations",
+    "were any of our ads restricted because of the health claims",
+    "show me what the ad platforms rejected and why"
+  ],
+  "crm_search_accounts": [
+    "find the account for Brightwater Logistics",
+    "which customer record has the domain tallpine.io",
+    "look up the company Orchard & Finch in the crm",
+    "what accounts does Jordan own",
+    "is there already a record for Northgate Foods?",
+    "search our customers and prospects for anything matching 'kestrel'",
+    "get me the id for the Bluefin Analytics account",
+    "do we have Harbor Lane Clinics as a customer or prospect"
+  ],
+  "crm_get_account": [
+    "who owns the Copperleaf account and when do they renew",
+    "give me an overview of Silvermoor Health - tier, industry, open deals, main contacts",
+    "what tier is the Redhill Motors customer",
+    "prep me for my call with Lakeview Partners, pull their account profile",
+    "what's the ARR on the Granite Peak account per the CRM",
+    "show the full record for account 00341",
+    "who are the primary contacts at Maple Row Media and what deals are open",
+    "industry and renewal date for Tidewater Group"
+  ],
+  "crm_update_account": [
+    "reassign the Ironbridge Labs account to Priyanka",
+    "change Saltmarsh Co's tier to enterprise",
+    "their renewal moved to march 1, update the Fernhill record",
+    "set industry on the Quarry Street Bakeries account to food and beverage",
+    "make Sam the owner of Westfield Dental from today",
+    "the Cobalt Ridge account is actually healthcare, fix the industry field",
+    "bump Pinecrest Logistics from mid-market to strategic tier",
+    "update the renewal date on account 00577 to 2027-01-15"
+  ],
+  "crm_list_contacts": [
+    "who do we know at Amberline",
+    "list the people at Oakhaven with VP in their title",
+    "everyone at Starling Robotics and when we last talked to them",
+    "find the finance contacts at Glenmore Capital",
+    "who's the IT person at Brookside Schools, I need their phone number",
+    "show me all contacts at the Vantage Arc account",
+    "which stakeholders at Coral Bay Resorts have gone quiet lately",
+    "get me an org-chart-ish list of people at Hollow Creek Farms"
+  ],
+  "crm_get_contact": [
+    "who is t.okafor@sundial-energy.com in our CRM",
+    "get contact 88213",
+    "what's the title and phone for the person with email mbell@ferrovia.co",
+    "find the crm record for the person who just replied to me, lena@quillpress.com",
+    "which account is r.dumont@palisade-group.com attached to",
+    "look up this person by email before my call: ade@lowfield-tiles.com",
+    "details on contact id C-4410",
+    "is kpatel@emberfield.io already a contact"
+  ],
+  "crm_create_contact": [
+    "add Maya Lindqvist, Head of Ops at Thornbury Freight, maya@thornbury.co to the CRM",
+    "new person: Diego Alvarez, CFO, link him to the Halcyon Air account",
+    "I met someone at the conference, create a contact for Priya Nair, priya.nair@vellum.dev",
+    "save this business card as a contact: Tom Becker, procurement lead",
+    "create a person record for the new champion at Riverbend Clinics",
+    "add the guy from the demo, Kenji Mori, kenji@saltgrass.io, title Eng Manager",
+    "we have a new buyer at Ashgrove Retail, please add her: Fatima Rahman",
+    "put Lucas Brandt into the crm under the Crestline account"
+  ],
+  "crm_list_deals": [
+    "what opportunities is Nadia working on",
+    "show me all deals in the proposal stage",
+    "which deals are expected to close before the end of the month",
+    "open opps on the Ridgeway Hotels account",
+    "list deals in negotiation owned by Marco",
+    "what's slipping - deals with a close date already past",
+    "every opportunity at Elmstead Bank, open or closed",
+    "pull my deals closing this quarter"
+  ],
+  "crm_get_deal": [
+    "what's the amount and probability on the Juniper Health expansion deal",
+    "line items on deal 55190",
+    "expected close date for the Kingsford renewal opp",
+    "details of the big Oakmere deal - stage, value, products",
+    "what products are on the Bramble & Co opportunity",
+    "how likely is the Seaview upsell to close, per the CRM",
+    "show me opportunity D-2231",
+    "how big is the Hawthorn platform deal and when's it supposed to land"
+  ],
+  "crm_create_deal": [
+    "open a new opportunity for Solace Insurance, 40k, closing in december",
+    "log a new deal on the Pebble Ridge account for the analytics add-on",
+    "create an opp: Wexford Mills expansion, 25k, discovery stage",
+    "the Aldergrove team wants a quote, start a deal for them",
+    "new upsell deal on account 00912 for 12 more seats",
+    "add a deal for Fairmount Clinics, expected close end of Q1, 60k",
+    "Carrow Systems is interested in the enterprise tier, set up an opportunity",
+    "start tracking a new sales opportunity with Bellhaven Mutual"
+  ],
+  "crm_update_deal_stage": [
+    "move the Solent deal to proposal",
+    "we won Greystone! mark it closed won",
+    "the Tamarind deal is dead, they went with a competitor - close it as lost",
+    "advance deal 77310 to negotiation",
+    "push Windmere back to discovery, the champion left",
+    "mark the Cedarline opp as closed lost, reason: budget cut",
+    "contract signed for Halden Freight, update the opportunity accordingly",
+    "they accepted the proposal, bump the Ravensworth deal to contract stage"
+  ],
+  "crm_get_pipeline_summary": [
+    "how much open pipeline do we have by stage",
+    "weighted pipeline value for Q4",
+    "count and total of open deals in the enterprise pipeline",
+    "what does Rosa's pipeline look like by stage",
+    "how much is sitting in proposal vs negotiation right now",
+    "probability-weighted value of everything open for next quarter",
+    "pipeline coverage snapshot for the mid-market team, by stage",
+    "number and value of open opportunities per sales stage"
+  ],
+  "crm_get_forecast": [
+    "what's the Q4 sales forecast by rep",
+    "commit vs best case for the EMEA team this quarter",
+    "how much has each rep closed so far this quarter and what are they committing",
+    "the VP wants the forecast call numbers for 2026-Q4",
+    "are we going to hit the number? show commit and upside per seller",
+    "closed-won to date plus best case for the enterprise team",
+    "forecast rollup for next quarter",
+    "which reps are behind on their commit"
+  ],
+  "crm_add_note": [
+    "jot a note on the Stonebrook account that they're evaluating a competitor",
+    "add to the Elmridge deal: legal review expected next week",
+    "save a note on contact Hana Ito saying she prefers email over calls",
+    "remember on the Fallow Point account that their fiscal year starts in april",
+    "note on the Brightmoor opp: procurement wants net-60 terms",
+    "record on the Ashby account that their champion is going on parental leave",
+    "add a free-form note to deal 40121 about the pricing objections",
+    "write down on the Quinton account record that they want a security questionnaire"
+  ],
+  "crm_list_notes": [
+    "what's the history with Larkspur Foods - notes and recent calls",
+    "show me the latest notes on the Penrose deal",
+    "what did we discuss with Elena Varga last time? check the activity",
+    "catch me up on everything logged against the Thistle account since august",
+    "recent meetings and emails with the Corbel account",
+    "any notes on the Ellery renewal I should read before the call",
+    "what's been logged on contact 3390 newest first",
+    "has anyone talked to Moorgate Pharma this month? check the timeline"
+  ],
+  "crm_log_activity": [
+    "log my call with the Kestrel Valley CTO from this morning",
+    "record that I had a demo meeting with Peregrine Health today at 2pm",
+    "I emailed the Lindenwood buyer the pricing sheet, put it on their timeline",
+    "add a meeting to the Orrin deal: QBR held yesterday, they're happy",
+    "track the discovery call with Sable Point, 30 mins, went well",
+    "mark that I spoke to the Calder procurement lead on the phone",
+    "log the email I sent to the Brockton contact about renewal terms",
+    "capture today's onsite with Winslow Grain on the account history"
+  ],
+  "crm_list_tasks": [
+    "what follow-ups do I have due this week",
+    "show Andre's open tasks",
+    "anything overdue on my crm to-do list",
+    "which follow-ups are due before friday",
+    "what am I supposed to chase today",
+    "list open sales tasks for the new rep",
+    "my pending follow-up items",
+    "what callbacks has Grace not done yet"
+  ],
+  "crm_create_task": [
+    "remind me in the crm to follow up with Ferncliff in two weeks",
+    "create a follow-up for Owen to send the Briarwood proposal by thursday",
+    "add a to-do on the Lowmoor deal: get security review done by the 20th",
+    "set a task to call the Halberd champion back next monday",
+    "assign Mia a follow-up on the Stillwater renewal due end of month",
+    "create a crm task to send contract redlines to Pembury",
+    "make a follow-up task on contact 7712 due tomorrow",
+    "schedule a check-in task for the Ashcombe account next week"
+  ],
+  "crm_list_renewals": [
+    "which customers renew in the next 90 days",
+    "upcoming renewals for my book this quarter with health scores",
+    "who's up for renewal in january and how healthy are they",
+    "list contracts expiring before year end with their ARR",
+    "renewals coming up for Theo's accounts",
+    "at-risk renewals next month - show the health scores",
+    "what renewals do we have in Q1 2027",
+    "contracts coming due between nov 1 and dec 15"
+  ],
+  "crm_merge_accounts": [
+    "we have two records for Glasshouse Media, combine them",
+    "merge the duplicate 'Vireo Inc' into the main Vireo account",
+    "dedupe: account 1123 and 1188 are the same company",
+    "fold the old Hartwell record into the new one and keep the contacts",
+    "there's a duplicate for Pine & Kiln, consolidate into the original",
+    "clean up the crm: Marlow Labs appears twice",
+    "combine the two Bracken Systems accounts, keep the one with the deals",
+    "merge the duplicate company created by the import into the primary"
+  ],
+  "searchPages": [
+    "find the onboarding guide in the wiki",
+    "is there a page about our expense policy",
+    "search our internal docs for the incident response runbook",
+    "where's the write-up on the pricing change from last spring",
+    "look in the knowledge base for anything about SSO setup",
+    "find wiki pages that mention the vendor review process",
+    "do we have documentation on how to request a laptop",
+    "search the engineering space for the on-call handbook"
+  ],
+  "getPage": [
+    "read me the contents of the Q3 planning page",
+    "open the travel policy doc and summarize it",
+    "pull the text of page 48812",
+    "what does the brand guidelines page actually say about logo spacing",
+    "get the full content of the onboarding checklist so I can review it",
+    "show me what's written on the release process page",
+    "load the meeting notes page from tuesday's offsite",
+    "fetch the body of that architecture overview page you found"
+  ],
+  "createPage": [
+    "write up a new wiki page for the data retention policy under Legal",
+    "create a page called 'Q1 Hiring Plan' in the people space",
+    "start a fresh doc under the Engineering home for the caching design",
+    "draft a new page with these meeting notes under Team Rituals",
+    "add a blank page titled Retro 14 Oct to the team space",
+    "make a new knowledge base article explaining how to reset 2FA",
+    "put this FAQ into a new page under Support",
+    "create a top-level page in the Marketing space for the rebrand"
+  ],
+  "updatePage": [
+    "add today's decisions to the bottom of the project page",
+    "replace the content of the pricing FAQ with this new version",
+    "append the action items to the weekly sync page",
+    "fix the outdated steps in the VPN setup page",
+    "update the holiday calendar page with next year's dates",
+    "tack this paragraph onto the end of the onboarding doc",
+    "rewrite the team charter page with the text below",
+    "edit the escalation contacts page, Lucia is the new lead"
+  ],
+  "deletePage": [
+    "delete the old 2023 offsite page and its subpages",
+    "trash the draft page about the cancelled project",
+    "remove that duplicate onboarding page",
+    "get rid of the obsolete vendor list page",
+    "throw away the test pages I created yesterday",
+    "bin the archived roadmap page and everything under it",
+    "please remove page 70021 from the wiki",
+    "this page is wrong and nobody uses it, delete it"
+  ],
+  "movePage": [
+    "move the API style guide under the Engineering Standards section",
+    "relocate the retro notes into the Archive parent",
+    "this page is in the wrong place, put it under HR Policies",
+    "reparent the launch checklist to sit under the Launch hub page",
+    "shift the interview rubric pages under Recruiting",
+    "nest the travel FAQ inside the Finance space's Policies page",
+    "move my draft from personal space to the team space home",
+    "reorganize: the security page should live under IT, not Ops"
+  ],
+  "listRecentPages": [
+    "what pages was I working on yesterday",
+    "show me docs I looked at recently",
+    "I can't remember the page name, it was something I edited this week",
+    "my recently viewed wiki pages",
+    "pull up the last few pages I touched",
+    "what was that doc I had open this morning",
+    "list my recent edits in the wiki",
+    "recently opened pages please, the last 10"
+  ],
+  "getPageHistory": [
+    "who changed the pricing page last and when",
+    "show the edit history for the security policy",
+    "when was the onboarding guide last updated and by whom",
+    "list all the revisions of the roadmap page",
+    "someone wiped a section of the runbook - who edited it today?",
+    "audit trail of changes to the travel policy page",
+    "how many times has the OKR page been edited this month",
+    "previous versions of the team charter"
+  ],
+  "restorePageVersion": [
+    "roll the pricing page back to how it was yesterday",
+    "undo the last edit to the runbook page, restore the previous version",
+    "someone overwrote the handbook - revert it to version 12",
+    "bring back last week's version of the roadmap page",
+    "restore the earlier copy of the security policy before Jake's edit",
+    "revert the onboarding doc to before the reorg changes",
+    "the FAQ got mangled, go back to the prior revision",
+    "put the team charter page back to the 1 october version"
+  ],
+  "listDatabases": [
+    "what tracker tables exist in the product space of the wiki",
+    "list the structured databases in our wiki",
+    "do we have a database for the content calendar in the docs tool",
+    "show me all the databases in the HR space",
+    "is there a docs database tracking vendor contracts",
+    "which wiki databases does the ops team use",
+    "find the docs database for the offsite signups",
+    "what structured lists are set up in the marketing space"
+  ],
+  "queryDatabase": [
+    "show the rows in the content calendar due this month",
+    "filter the hiring tracker database for candidates in onsite stage",
+    "which items in the roadmap database are marked 'at risk', sorted by owner",
+    "list vendor contracts in the wiki database expiring before march",
+    "from the OKR table in the wiki, show the ones with status red",
+    "get all entries in the equipment tracker assigned to Ines",
+    "sort the reading list database by date added",
+    "pull the launch tracker rows where priority is P0"
+  ],
+  "createDatabaseRow": [
+    "add a new entry to the content calendar: blog post on 12 Nov",
+    "log a new candidate in the hiring tracker database",
+    "put another vendor into the contracts table in the wiki",
+    "add a row to the roadmap database for the export feature",
+    "insert an item into the equipment tracker for Kai's new monitor",
+    "new record in the offsite signups database for me",
+    "track a new competitor in the competitive intel table",
+    "add this book to the team reading list database"
+  ],
+  "updateDatabaseRow": [
+    "mark the export feature row in the roadmap database as shipped",
+    "change the owner of that content calendar item to Bea",
+    "set the status of candidate Ravi in the hiring tracker to offer",
+    "update the due date on the launch tracker row to next friday",
+    "flip the vendor entry's renewal field to 'yes'",
+    "change priority on that roadmap row from P2 to P1",
+    "the equipment tracker item for Kai: set returned = true",
+    "edit the properties of row 3381, status done"
+  ],
+  "addComment": [
+    "leave a comment on the pricing page asking where the numbers came from",
+    "reply in the open thread on the design doc saying I agree with Mo",
+    "add feedback on the hiring plan page: we need a budget line",
+    "comment on the launch brief that the date is wrong",
+    "respond to Wen's question in the margin of the spec page",
+    "drop a note on the roadmap page for the PM to review section 3",
+    "ask the author of the onboarding page a question via a comment",
+    "add a comment on paragraph two of the policy draft"
+  ],
+  "listComments": [
+    "what open feedback is there on the design doc",
+    "show me unresolved comments on the launch brief",
+    "has anyone commented on my proposal page",
+    "list all comment threads on the security policy including resolved ones",
+    "what are people saying in the margins of the roadmap page",
+    "are there outstanding review comments on the Q4 plan page",
+    "summarize the discussion threads on the spec page",
+    "any questions left open on the onboarding doc"
+  ],
+  "resolveComment": [
+    "mark the comment about the budget on the hiring plan as resolved",
+    "close out that feedback thread on the doc, it's fixed",
+    "resolve thread 5512 on the spec",
+    "the typo comment is addressed, resolve it",
+    "clear the open discussion on the launch date, we decided",
+    "mark the addressed review note on the design doc as done",
+    "that comment from Lior on the policy page is handled, close the thread",
+    "tidy up: resolve the page comment I just replied to"
+  ],
+  "sharePage": [
+    "give the finance group edit access to the budget page",
+    "share the launch brief with Noor as view only",
+    "turn off the public link on the pricing page",
+    "make the onboarding guide readable by the contractors group",
+    "let the design team comment on the spec page",
+    "revoke Pavel's access to the compensation page",
+    "can you open the roadmap page to everyone in the company read-only",
+    "create a public link for the help article so customers can see it"
+  ],
+  "listTemplates": [
+    "what templates do we have for writing docs",
+    "is there a template for a postmortem",
+    "show the available page templates in the workspace",
+    "do we have a standard RFC layout I can start from",
+    "what starter layouts exist for meeting notes",
+    "list templates so I can pick one for the project brief",
+    "is there an official 1:1 notes format",
+    "any boilerplate available for a launch plan page"
+  ],
+  "createPageFromTemplate": [
+    "start a new postmortem page from the template for last night's outage",
+    "make a 1:1 notes page for me and Iris using the standard format",
+    "spin up an RFC doc from the template titled 'Event bus v2'",
+    "use the weekly status template to create this week's update under Projects",
+    "new project brief from the template, project name Lighthouse, owner Tess",
+    "generate a launch plan page from our boilerplate, filling in the date as 3 Dec",
+    "create the retro page for sprint 42 from the retro template",
+    "fill out the hiring plan template for the data team"
+  ],
+  "exportPage": [
+    "export the security policy as a PDF to send to the auditor",
+    "give me the onboarding guide and its subpages as markdown",
+    "download the board memo page as html",
+    "I need a pdf of the travel policy for printing",
+    "export the whole engineering handbook section to markdown",
+    "save the contract summary page as a PDF file",
+    "can I get the spec page as a file I can attach to an email",
+    "convert the meeting notes page into html"
+  ],
+  "github_search_repos": [
+    "which repo has the payments service code",
+    "find our repositories written in Go",
+    "are there any repos tagged machine-learning in the org",
+    "what's the repo name for the mobile app",
+    "list repos related to terraform",
+    "is there a repository for the internal design system",
+    "search our org's repos for something called 'ledger'",
+    "which of our projects are in rust"
+  ],
+  "github_get_file": [
+    "show me the dockerfile in the api repo",
+    "what's in package.json on the main branch of the web app",
+    "open src/config/limits.ts at tag v2.3.0",
+    "grab the README from the billing-service repo",
+    "what did the CODEOWNERS file look like at commit abc1234",
+    "read the helm values file on the release branch",
+    "get the contents of .github/workflows/ci.yml",
+    "pull the migration file 0042_add_index.sql from the backend repo"
+  ],
+  "github_search_code": [
+    "where in our code do we call the tax calculation endpoint",
+    "find every place that reads the FEATURE_TIMEOUT setting",
+    "which repos still import the old logging library",
+    "grep the org for 'TODO: remove before launch'",
+    "where is the retry backoff function defined",
+    "search python files for uses of datetime.utcnow",
+    "find usages of the deprecated v1 client across all repos",
+    "who hardcodes the s3 bucket name, look in the source"
+  ],
+  "github_list_prs": [
+    "what PRs are open in the frontend repo",
+    "show me Ines's pull requests in the api repo",
+    "list open PRs against the release branch",
+    "which pull requests have the needs-review label",
+    "what got merged in the infra repo recently",
+    "any open PRs from dependabot in the web repo",
+    "list all closed PRs targeting main in the sdk repo",
+    "what's waiting for review on the data-pipeline repo"
+  ],
+  "github_get_pr": [
+    "is PR 412 in the api repo ready to merge",
+    "who's reviewing pull request 88 and has anyone approved",
+    "are the checks passing on PR 1203",
+    "what's the description on the auth refactor PR",
+    "does #57 have merge conflicts",
+    "status of my pull request in the mobile repo, number 640",
+    "who opened PR 219 and what's it for",
+    "review state for the dependency bump PR"
+  ],
+  "github_get_pr_diff": [
+    "show me the code changes in PR 412",
+    "what lines did #88 actually change",
+    "give me the diff for the pagination pull request so I can review it",
+    "what's changed in PR 1203, file by file",
+    "I want to read the patch for pull request 57",
+    "summarize the code changes in the caching PR",
+    "is there anything risky in the diff of PR 300",
+    "pull the raw changes from the migration pull request"
+  ],
+  "github_create_pr": [
+    "open a pull request from feature/new-onboarding into main",
+    "create a PR for my branch fix-timezone-bug",
+    "raise a pull request to merge release/2.4 back into develop",
+    "put up a PR with the changes on branch docs-typo, title 'Fix typos'",
+    "I've pushed my branch, can you open the PR against staging",
+    "make a PR from hotfix/login into main with a short description",
+    "start a pull request for the dependency upgrade branch",
+    "submit my branch add-rate-limit for review as a PR"
+  ],
+  "github_review_pr": [
+    "approve PR 412",
+    "request changes on #88, the tests are missing",
+    "leave a review on the auth PR saying the naming is confusing",
+    "LGTM the dependency bump pull request",
+    "block PR 1203 until they add a migration",
+    "give my approval to Ola's pull request in the api repo",
+    "submit a review on #57 asking them to split it up",
+    "sign off on the hotfix PR"
+  ],
+  "github_merge_pr": [
+    "merge PR 412",
+    "squash and merge the docs pull request",
+    "ship #88 into main with a rebase",
+    "it's approved and green, merge the hotfix PR",
+    "land pull request 1203",
+    "merge Ola's PR now that checks pass",
+    "can you squash-merge the dependency bump",
+    "get #57 merged before the cutoff"
+  ],
+  "github_list_issues": [
+    "show issues assigned to me in the api repo",
+    "list issues labeled good-first-issue in the sdk",
+    "all closed issues in the infra repo",
+    "what's in the backlog of the web repo labeled p1",
+    "issues assigned to Tariq in the data-pipeline repo",
+    "show me the open tickets in the design-system repo",
+    "list security-labeled issues in the backend repo"
+  ],
+  "github_search_issues": [
+    "has anyone filed an issue about the export timing out, anywhere in the org",
+    "search all repos for open bugs mentioning 'memory leak'",
+    "find issues or PRs that reference the SSO outage",
+    "is there already a ticket somewhere in our repos about dark mode",
+    "find PRs across the org labeled breaking-change",
+    "any open issues across our repos mentioning the 'rate limit' error",
+    "look for closed issues about flaky tests in any repo",
+    "search github for issues I've commented on about the CSV import"
+  ],
+  "github_create_issue": [
+    "file a bug in the web repo: login button does nothing on safari",
+    "open an issue in the api repo to track the deprecation of v1",
+    "create a ticket for the flaky test in the sdk, assign to Bo",
+    "log a feature request in the mobile repo for offline mode",
+    "raise an issue about the broken link in the docs repo, label documentation",
+    "make an issue in infra for rotating the old certs",
+    "write up this bug report as an issue in the backend repo",
+    "track the memory spike as a new github issue, label perf"
+  ],
+  "github_comment_issue": [
+    "comment on issue 233 that it's fixed in the next release",
+    "reply on PR 412 saying I'll look tomorrow",
+    "add a note to the dark mode issue linking the design",
+    "post a repro on issue #91",
+    "let the reporter of issue 1500 know we need more logs",
+    "ping the assignee on issue 77 asking for an update",
+    "leave a comment on the flaky test ticket with the stack trace",
+    "say thanks on the contributor's pull request"
+  ],
+  "github_close_issue": [
+    "close issue 233, it's done",
+    "close the dark mode ticket as not planned",
+    "mark #91 complete",
+    "won't fix - close the feature request about xml export",
+    "the bug is resolved, close issue 1500",
+    "shut the duplicate issue 610",
+    "close out the stale ticket about IE support as not planned",
+    "issue 77 is fixed by the merged PR, close it"
+  ],
+  "github_list_workflow_runs": [
+    "is CI green on main",
+    "show the last few Actions runs for the api repo",
+    "which CI runs failed on my branch today",
+    "list recent runs of the nightly tests workflow",
+    "what's currently running in CI for the web repo",
+    "did the tests pass on the release branch",
+    "history of build pipeline results for the sdk repo",
+    "any failing actions on the feature/new-onboarding branch"
+  ],
+  "github_get_workflow_run_logs": [
+    "why did CI fail on run 88123",
+    "show me the output of the failed test job",
+    "get the logs for the lint step that broke on main",
+    "what error did the Actions build hit",
+    "pull the CI logs for the integration tests run",
+    "the unit tests are red, show me the failure output",
+    "read the console output of workflow run 5521",
+    "what went wrong in the last github actions run on my PR"
+  ],
+  "github_rerun_workflow": [
+    "rerun the failed jobs on run 88123",
+    "kick CI again, it was a flaky test",
+    "retry the Actions run on main",
+    "re-trigger the tests on my PR",
+    "rerun the whole workflow for run 5521",
+    "the runner died, can you restart that build",
+    "rerun just the failed integration tests job",
+    "give the CI pipeline another go"
+  ],
+  "github_list_releases": [
+    "what's the latest release of the sdk",
+    "show me the release notes for the last few versions of the api",
+    "when did we tag v3.0",
+    "list recent releases of the mobile app repo",
+    "what changed in the most recent CLI release",
+    "how often have we been cutting releases on the web repo",
+    "what version did we ship last month in the backend repo",
+    "show the changelog entries for our last 5 releases"
+  ],
+  "github_create_release": [
+    "cut a release v2.5.0 for the api with auto-generated notes",
+    "draft a release for tag v1.9.0 in the sdk",
+    "publish the 4.0 release in the cli repo",
+    "create a github release from the latest tag with notes from merged PRs",
+    "tag and release v0.8.3 of the design system",
+    "make a draft release so marketing can review the notes",
+    "we're ready to version the mobile app, create release 5.2",
+    "new release please, tag it v2026.10.1"
+  ],
+  "github_list_commits": [
+    "what's been committed to main this week",
+    "who changed files in src/billing recently",
+    "list Tariq's commits on the api repo since monday",
+    "show the commit log for the payments module",
+    "what changed in the config directory over the last month",
+    "commits to the release branch since the 1st",
+    "has anyone touched the auth folder recently",
+    "show me the latest commits on develop"
+  ],
+  "github_compare_refs": [
+    "which commits are in staging but not in main",
+    "list files changed between the release branch and develop",
+    "how far behind main is my feature branch",
+    "what will go out if we release from main versus the last tag",
+    "compare tag v1.0 to HEAD",
+    "diff between sha 1a2b3c and 4d5e6f",
+    "what changed in the code between last week's release and now"
+  ],
+  "slack_list_channels": [
+    "what chat channels exist",
+    "is there a channel for the design team",
+    "list private channels I'm in",
+    "which channels have the most members",
+    "find the channel about the office move",
+    "what's the topic of the support channels",
+    "show all public channels",
+    "is there already a channel for the conference"
+  ],
+  "slack_get_channel_history": [
+    "what's been said in #incidents today",
+    "catch me up on #marketing since this morning",
+    "show me the last 20 messages in the eng channel",
+    "what did people post in #random while I was out",
+    "read the recent chatter in #sales-wins",
+    "summarize the latest in #product-launch",
+    "anything new in the support channel since 9am",
+    "scroll back through #ops for the last hour"
+  ],
+  "slack_search_messages": [
+    "find the message where someone shared the VPN fix",
+    "did Hugo say anything about the contract in chat last week",
+    "search DMs and channels for 'quarterly offsite'",
+    "who mentioned the outage before 1 October",
+    "find where Zara posted the figma link",
+    "look through chat for the conversation about switching vendors",
+    "what did the team say about the pricing change in #sales",
+    "dig up the message with the new office address"
+  ],
+  "slack_post_message": [
+    "post in #general that the office is closed friday",
+    "announce the new release in #product",
+    "let the #sales channel know the deck is updated",
+    "drop a note in #eng that standup moves to 10:30",
+    "share the weekly numbers summary in #leadership",
+    "tell #support the fix is live",
+    "send a message to the design channel asking for feedback on the mockups",
+    "write a quick update in #marketing about the campaign results"
+  ],
+  "slack_reply_in_thread": [
+    "reply to Leo's question in the thread in #help",
+    "answer in the thread under the incident announcement",
+    "respond in that thread that I'm on it",
+    "add to the discussion thread on the release message",
+    "reply under the original post in #product and also send it to the channel",
+    "chime in on the thread about lunch orders",
+    "respond to the thread where Ana asked for the numbers",
+    "follow up in the thread rather than the main channel"
+  ],
+  "slack_get_thread_replies": [
+    "what did everyone say in the thread under the outage message",
+    "read all replies on the release announcement thread",
+    "how did the discussion on Noah's proposal end up",
+    "show me the full thread on the hiring post",
+    "what's the conclusion in that long thread in #eng",
+    "catch me up on the replies to my question in #help",
+    "how many people responded in the thread about the offsite",
+    "pull every reply under the pricing thread"
+  ],
+  "slack_add_reaction": [
+    "thumbs up Mira's message",
+    "react with eyes to the latest request in #help so they know I'm looking",
+    "add a checkmark to the access request message",
+    "put a tada on the announcement",
+    "emoji-react to the message to acknowledge it",
+    "add white_check_mark to the ticket post in #ops",
+    "heart Sam's farewell message",
+    "acknowledge the alert message with an eyes react"
+  ],
+  "slack_pin_message": [
+    "pin the onboarding links message in #new-hires",
+    "pin the incident summary to the channel",
+    "make the meeting agenda message sticky in #team",
+    "pin Kai's post with the holiday schedule",
+    "keep the parking details at the top of #office by pinning it",
+    "pin that message so people stop asking",
+    "pin the release checklist post in #eng",
+    "add the FAQ message to the channel's pins"
+  ],
+  "slack_list_users": [
+    "who's in our chat workspace",
+    "list everyone and their timezones",
+    "who's online right now",
+    "show members with their titles",
+    "how many people are in the workspace",
+    "which teammates are in the APAC timezone",
+    "list all members so I can find the right designer",
+    "who is active vs away at the moment"
+  ],
+  "slack_get_user_profile": [
+    "what's Elif's job title and timezone",
+    "look up the chat profile for priyam@example.com",
+    "what's Ravi's status right now, is he on vacation",
+    "find the email address for the member U02ABCD",
+    "what timezone is Jonas in before I ping him",
+    "show me the profile of whoever wrote that message",
+    "what's the real name behind the handle 'dbz'",
+    "is Clara out sick? check her status"
+  ],
+  "slack_send_dm": [
+    "DM Lena that the report is ready",
+    "privately message Omar and Chidi about the change",
+    "send a direct message to my manager saying I'll be late",
+    "ping Rosa one-on-one with the link",
+    "start a group DM with Ben and Yuki about the offsite",
+    "message Tomas directly, not in a channel",
+    "send a private note to the new hire welcoming them",
+    "shoot Haruto a quick chat message asking if he has 5 minutes"
+  ],
+  "slack_schedule_message": [
+    "post the standup reminder in #team tomorrow at 9",
+    "schedule an announcement in #general for monday morning",
+    "send the release note to #product at 5pm today",
+    "queue up a message in #sales for friday 8am about the new pricing",
+    "have a message go to #eng at noon saying the code freeze starts",
+    "post the weekly kudos in #shoutouts first thing next week",
+    "time this message to go out in #support when the US wakes up",
+    "line up a post in #marketing for the launch date"
+  ],
+  "slack_set_reminder": [
+    "remind me at 3pm to call the vendor",
+    "set a reminder to submit expenses on friday",
+    "nudge me tomorrow morning about the 1:1 prep",
+    "remind Ezra to review the doc at 4",
+    "ping me in an hour to follow up with Gita",
+    "remind me every monday to fill in my timesheet",
+    "don't let me forget the dentist at 5",
+    "set a nudge for next week about renewing my parking pass"
+  ],
+  "slack_list_reminders": [
+    "what reminders do I have set",
+    "show my upcoming reminders",
+    "did I set a reminder for the timesheet thing",
+    "list everything I've asked to be reminded about",
+    "what nudges are pending for me this week",
+    "check my chat reminders",
+    "anything I told myself to remember tomorrow?",
+    "show all my active reminders"
+  ],
+  "slack_create_channel": [
+    "make a new channel for the website redesign",
+    "create a private channel for the leadership offsite",
+    "spin up #proj-atlas",
+    "we need a channel for the incident war room",
+    "set up a public channel called conf-2027",
+    "create a chat room for the new partnership team",
+    "open a private space in chat for the hiring committee",
+    "new channel please: #customer-advisory-board"
+  ],
+  "slack_invite_to_channel": [
+    "add Nina and Paolo to #proj-atlas",
+    "invite the new hire to #engineering",
+    "bring the design team into the redesign channel",
+    "get Felix into the incident channel",
+    "add me to #leadership-offsite",
+    "invite the contractors to the vendor channel",
+    "pull Sven into #customer-advisory-board",
+    "make sure everyone from support is in #escalations"
+  ],
+  "slack_set_channel_topic": [
+    "change the topic of #incidents to 'SEV2: checkout errors'",
+    "update #oncall's header with this week's on-call person",
+    "set the topic in #proj-atlas to the launch date",
+    "put the current sprint goal at the top of #team",
+    "edit the channel topic to link the new runbook",
+    "the #support topic is stale, update it",
+    "make the header line in #random say 'no work talk'",
+    "set #help's topic to tell people to use the form"
+  ],
+  "slack_archive_channel": [
+    "archive #proj-old-website",
+    "we're done with the offsite channel, close it down",
+    "shut down the channel for the cancelled project",
+    "archive the incident room now that it's resolved",
+    "clean up dead channels: archive #temp-q2",
+    "retire #legacy-support",
+    "nobody posts in #book-club anymore, archive it",
+    "make the conference channel read-only by archiving"
+  ],
+  "slack_upload_file": [
+    "share this csv in #finance",
+    "upload the screenshot to #bugs",
+    "post the log snippet in #eng as a file",
+    "attach the slide deck to the #sales channel with a short note",
+    "drop the pdf of the policy in #people",
+    "upload the error output as a snippet in #oncall",
+    "send the spreadsheet to the analytics channel",
+    "put the design mockup image in #design"
+  ],
+  "get_billing_customer": [
+    "what payment method is on file for accounts@lumora.co",
+    "does cus_7781 have a credit balance",
+    "what currency is that customer billed in",
+    "check the VAT number on the billing account for Pellucid",
+    "look up the billing profile for finance@harrowgate.io",
+    "is there a default card for this customer or are they invoiced",
+    "what tax id do we have for customer cus_3390",
+    "billing details for the customer who just emailed support"
+  ],
+  "list_subscriptions": [
+    "what subscriptions does cus_4412 have",
+    "how many subscriptions are past due right now",
+    "list everyone on a free trial",
+    "show all canceled subscriptions on the pro plan",
+    "which customers are on the legacy plan",
+    "does this customer have more than one active subscription",
+    "list active subscriptions for the starter plan",
+    "who's currently trialing"
+  ],
+  "get_subscription": [
+    "when does sub_9921's trial end",
+    "what plan and how many seats is this subscription on",
+    "next invoice date for subscription sub_5510",
+    "is there a discount on that customer's subscription",
+    "what's the current billing period for sub_7744",
+    "details on the subscription for the Fernwood team",
+    "how many seats are they paying for",
+    "check if the subscription has a coupon and when it renews"
+  ],
+  "change_subscription_plan": [
+    "upgrade sub_9921 to the business plan",
+    "move this customer down to the starter tier",
+    "switch them from monthly to annual pro",
+    "they want the enterprise plan starting now with proration",
+    "downgrade the Larchmont subscription to basic, no proration",
+    "change the plan on sub_3011 to team",
+    "customer asked to go up a tier, please do it",
+    "swap the subscription to the new 2026 pricing plan"
+  ],
+  "cancel_subscription": [
+    "cancel sub_7744 at period end",
+    "the customer wants out immediately, end their subscription now",
+    "stop the recurring billing for Brennan Studio, reason: switched vendors",
+    "terminate the subscription, they're closing the business",
+    "end the trial subscription so they don't get charged",
+    "customer churned, cancel at the end of this month",
+    "cancel their plan effective today",
+    "turn off auto-renew for this subscription"
+  ],
+  "pause_subscription": [
+    "pause billing for sub_4410 for two months",
+    "customer is on maternity leave, hold their charges for 3 cycles",
+    "can we stop charging the Dunmore account for a month without canceling",
+    "freeze collection on this subscription for a quarter",
+    "seasonal business, skip billing for the next two cycles",
+    "put the subscription on hold for one billing period",
+    "temporarily suspend payment collection on sub_2290",
+    "they asked for a break from payments until january"
+  ],
+  "list_invoices": [
+    "show all unpaid invoices for cus_4412",
+    "list open invoices across all customers",
+    "which invoices are marked uncollectible",
+    "invoices for this customer since january",
+    "what draft invoices are waiting to be finalized",
+    "has the customer paid all their invoices this year",
+    "list voided invoices from last month",
+    "how many invoices are still outstanding"
+  ],
+  "get_invoice": [
+    "what's on invoice INV-2041",
+    "line items and tax on in_8812",
+    "how much is still due on that invoice",
+    "was invoice 1188 paid in full",
+    "break down the charges on the customer's latest invoice",
+    "the customer disputes a line on invoice 3307, show it to me",
+    "amount paid vs due on in_5501",
+    "what tax was applied to invoice INV-0990"
+  ],
+  "void_invoice": [
+    "void invoice INV-2041, it was issued by mistake",
+    "cancel that open invoice, we sent it to the wrong entity",
+    "kill in_8812, it's a duplicate",
+    "the invoice was created with the wrong amount, void it",
+    "nullify the open invoice for the trial customer",
+    "void the december invoice for the account we comped",
+    "invalidate invoice 3307 so it can't be paid",
+    "please void the open invoice before they pay it twice"
+  ],
+  "send_invoice": [
+    "email invoice INV-2041 to the customer",
+    "resend the invoice, they say they never got it",
+    "send in_8812 to ap@lowmere.com instead of the default contact",
+    "forward the latest invoice to their accounts payable team",
+    "re-send the overdue invoice to the billing contacts",
+    "deliver invoice 1188 to the customer",
+    "the finance contact changed, send the invoice to the new address",
+    "can you get the invoice into the customer's inbox again"
+  ],
+  "create_credit_note": [
+    "issue a 200 credit on invoice INV-2041 for the outage",
+    "credit back the duplicate line on in_8812",
+    "they were overcharged by 3 seats, credit the difference on that invoice",
+    "give a partial credit on the paid invoice because of the order change",
+    "credit the full amount of invoice 3307, product didn't work for them",
+    "make a credit memo against last month's invoice",
+    "reduce what they owe on the open invoice by 150 as a goodwill gesture",
+    "write a credit note for the duplicated invoice"
+  ],
+  "list_payments": [
+    "show recent charges for cus_4412",
+    "did the customer's card get declined? show failed payments",
+    "list all refunded payments for this customer",
+    "what payments have we collected from them since june",
+    "why are payments failing - show decline codes for cus_9981",
+    "how many charge attempts did we make on their card this month",
+    "payment history for the Calloway billing customer",
+    "list successful charges for this customer"
+  ],
+  "get_payment": [
+    "details on charge ch_3381",
+    "which card was used for payment ch_9921, last 4 digits",
+    "did ch_5521 go through or fail",
+    "what's the risk score on that suspicious payment",
+    "card brand and outcome for the 499 charge yesterday",
+    "look up payment ch_0042",
+    "was this charge flagged as risky",
+    "amount and result of that one card charge the customer is asking about"
+  ],
+  "refund_payment": [
+    "refund ch_3381 in full",
+    "give the customer 50 back on their last charge",
+    "they were charged twice, refund the duplicate",
+    "refund the payment, customer requested it",
+    "partial refund of 120 on ch_9921",
+    "fraudulent charge - refund it",
+    "send the money back to their card for the annual payment",
+    "issue a refund to the original card for the cancelled order"
+  ],
+  "retry_payment": [
+    "try charging the open invoice again now",
+    "customer updated their card, attempt collection on INV-2041",
+    "retry in_8812 immediately",
+    "run the card again for the overdue invoice",
+    "they topped up their account, reattempt payment",
+    "collect on invoice 3307 now instead of waiting for the next retry",
+    "re-attempt the failed charge on the open invoice",
+    "give the payment another shot on the unpaid invoice"
+  ],
+  "get_dunning_status": [
+    "where are we in the retry cycle for sub_4410",
+    "how many times have we tried to collect from this past due customer",
+    "last decline reason and next retry date for that overdue subscription",
+    "have we sent the failed payment reminder emails to them yet",
+    "status of collections on the past_due subscription for Kittering Labs",
+    "when's the next automatic charge attempt for this delinquent account",
+    "what's the recovery status on the failed renewal",
+    "is this customer about to get cut off for non-payment? check the retry schedule"
+  ],
+  "send_payment_method_update_link": [
+    "send the customer a link to update their card",
+    "their card expired, email them a way to put in a new one",
+    "can we get cus_4412 to change their payment method",
+    "email the update-your-card page to the billing contact",
+    "send a secure card update link to the Hollis team",
+    "help the customer replace the card on file without sharing details with us",
+    "the card keeps declining, send them the self-serve link to fix it",
+    "email cus_9981 so they can swap credit cards"
+  ],
+  "list_plans": [
+    "what plans do we sell and at what price",
+    "list our current price points",
+    "is there still a legacy starter plan",
+    "what does the business tier cost per month",
+    "show me all active pricing plans",
+    "what plan ids exist for annual billing",
+    "pricing catalog please, including archived plans",
+    "how much is the enterprise plan list price"
+  ],
+  "apply_coupon": [
+    "apply code WELCOME20 to this customer",
+    "give sub_9921 the 15% loyalty discount",
+    "add the partner coupon to cus_4412",
+    "the customer has a promo code from the webinar, put it on their subscription",
+    "discount their next bills with the NONPROFIT code",
+    "attach coupon SPRING10 to the subscription",
+    "they were promised 3 months free, add that coupon",
+    "apply the retention discount we offered them"
+  ],
+  "get_mrr_snapshot": [
+    "how many active subscribers do we have this month",
+    "live churn for this month so far",
+    "current recurring revenue number straight from billing",
+    "quick MRR and subscriber count for this month",
+    "what was MRR at the end of last month according to billing",
+    "how much monthly recurring revenue have we lost to churn this month",
+    "today's subscriber total and MRR"
+  ],
+  "list_services": [
+    "which services does the platform team own",
+    "what version of each service is in prod right now",
+    "list all the services we deploy",
+    "what's running in staging vs production across services",
+    "show services owned by the payments team",
+    "which team owns the notifications service",
+    "inventory of microservices and their versions per environment",
+    "what services do we have"
+  ],
+  "get_service": [
+    "tell me about the checkout service - repo, runtime, current release",
+    "which repo backs the search-api service",
+    "what release is the auth service on in prod",
+    "overview of the email-sender service",
+    "what runtime does the image-resizer use",
+    "what environments is the reports service deployed to",
+    "quick summary of the gateway service and its health",
+    "details for the ledger service"
+  ],
+  "list_deploys": [
+    "when was checkout last deployed to production",
+    "who shipped the auth service yesterday",
+    "deploy history for search-api in staging",
+    "show the last 10 production deploys and whether they succeeded",
+    "did anyone push the gateway service this afternoon",
+    "what version did we roll to prod last friday",
+    "list recent failed deploys"
+  ],
+  "get_deploy_status": [
+    "is the deploy I just started done",
+    "where is deploy 4512 - still migrating?",
+    "check progress on the checkout rollout",
+    "did deploy 7720 pass verification",
+    "which step is the prod deploy stuck on",
+    "has the migration step finished for the auth release",
+    "status of the in-flight deploy for search-api",
+    "is the rollout complete yet"
+  ],
+  "trigger_deploy": [
+    "ship main of the checkout service to staging",
+    "deploy tag v2.4.0 of auth to production",
+    "push branch feature/new-cart to staging",
+    "roll out commit 9f3c2a of the gateway to prod",
+    "deploy the latest of search-api",
+    "put the hotfix branch on staging so QA can test",
+    "release the ledger service at v1.12 to production",
+    "kick off a deploy of email-sender from main"
+  ],
+  "rollback_deploy": [
+    "roll back checkout in prod, the new version is broken",
+    "revert the auth service to the previous release",
+    "undo today's deploy of the gateway",
+    "take search-api back to v3.1.0 in production",
+    "the release is throwing 500s, go back to the last good version",
+    "rollback staging for the ledger service",
+    "restore the previous build of email-sender in prod",
+    "back out the deploy that went out at 2pm"
+  ],
+  "promote_release": [
+    "promote what's on staging for checkout to prod",
+    "QA signed off, push the staging version of auth to production",
+    "move the staging release of search-api up to prod",
+    "staging looks good, take it live",
+    "graduate the gateway release from staging to production",
+    "promote ledger",
+    "send the tested staging build of email-sender to prod",
+    "make prod match staging for the reports service"
+  ],
+  "get_deploy_logs": [
+    "why did the checkout deploy fail",
+    "show the build output for deploy 4512",
+    "logs from the migration step of the auth release",
+    "the rollout errored, show me what happened",
+    "what did the verify step print for deploy 7720",
+    "get the deploy logs for the failed prod release",
+    "did the database migration throw anything during last night's deploy",
+    "build log for the search-api release that broke"
+  ],
+  "tail_service_logs": [
+    "show errors from the checkout service in prod over the last 15 minutes",
+    "tail the auth service logs",
+    "any warnings from the gateway in staging since noon",
+    "grep the runtime logs of search-api for 'timeout'",
+    "what's the ledger service printing right now",
+    "users report 502s, check the live logs for the payments service",
+    "stream the latest app output from email-sender",
+    "look for 'connection refused' in production logs for the reports service"
+  ],
+  "get_service_health": [
+    "is checkout healthy in prod",
+    "what's the error rate on the auth service right now",
+    "p95 latency for search-api",
+    "are all instances of the gateway up",
+    "health check status for the ledger service in staging",
+    "is anything wrong with email-sender? latency and errors",
+    "how is the API holding up under load",
+    "are the health checks passing after the release"
+  ],
+  "restart_service": [
+    "restart checkout in production",
+    "bounce the auth service",
+    "do a rolling restart of the gateway in staging",
+    "the workers are stuck, restart search-api",
+    "cycle all instances of the ledger service",
+    "memory is creeping up on email-sender, give it a restart",
+    "restart the reports service to pick up the new cert",
+    "turn it off and on again - the notifications service in prod"
+  ],
+  "scale_service": [
+    "scale checkout to 10 instances in prod",
+    "we're expecting a traffic spike, add more replicas to the gateway",
+    "drop staging search-api to 1 instance",
+    "bump auth to 6 pods",
+    "scale down the reports service overnight to save money",
+    "how about 4 copies of email-sender in production",
+    "increase the instance count for the ledger service",
+    "scale the image-resizer to zero in staging"
+  ],
+  "list_env_vars": [
+    "what config variables are set for checkout in prod",
+    "is DATABASE_URL defined for the auth service",
+    "list the env settings on search-api staging",
+    "which environment variables does the gateway have",
+    "check whether a PAYMENTS_KEY env exists on ledger",
+    "compare the variables set in staging vs prod for email-sender",
+    "what env names are configured on the reports service",
+    "does the notifications service have ERROR_TRACKER_DSN set"
+  ],
+  "set_env_var": [
+    "set LOG_LEVEL=debug on checkout in staging",
+    "update the API timeout variable on the gateway to 30",
+    "add a new env var REDIS_URL to the auth service in prod",
+    "change MAX_WORKERS to 8 for search-api without restarting",
+    "point the ledger service's QUEUE_HOST at the new broker",
+    "configure FEATURE_REGION=eu for email-sender in production",
+    "turn on verbose logging for reports via its env config",
+    "set the CACHE_TTL variable to 600 on staging"
+  ],
+  "delete_env_var": [
+    "remove the OLD_API_URL variable from checkout",
+    "delete LEGACY_MODE from auth in prod",
+    "get rid of the unused DEBUG env on the gateway",
+    "drop the TEMP_FLAG variable from search-api staging",
+    "clean up the stale config var on ledger",
+    "unset MAINTENANCE_MSG on email-sender",
+    "we don't need the SMTP_FALLBACK var anymore, remove it",
+    "strip the deprecated env variable from the reports service"
+  ],
+  "lock_environment": [
+    "freeze prod deploys, we're in an incident",
+    "lock production for the holiday code freeze until jan 2",
+    "block all deploys to staging during the load test",
+    "nobody ship anything to prod until the audit is done",
+    "put a deploy freeze on production till 6pm",
+    "stop people from releasing to prod during the board demo",
+    "lock down staging while we migrate the database",
+    "start the release freeze on production now"
+  ],
+  "unlock_environment": [
+    "lift the prod freeze",
+    "incident's over, allow deploys again",
+    "unlock staging",
+    "end the code freeze on production",
+    "deploys can resume to prod",
+    "remove the lock on staging, load test is done",
+    "unfreeze production",
+    "re-open production for releases"
+  ],
+  "list_feature_flags": [
+    "which flags are on for checkout in prod",
+    "what feature toggles exist for the auth service",
+    "is new_cart_flow enabled in staging",
+    "show the rollout percentages for the search-api flags",
+    "list flags on the gateway and their state per env",
+    "is the dark mode toggle live in production yet",
+    "what experiments are switched on for email-sender",
+    "flag inventory for the ledger service"
+  ],
+  "toggle_feature_flag": [
+    "turn on new_cart_flow in production",
+    "roll out the dark mode flag to 10% of prod",
+    "disable the beta_search flag in staging",
+    "kill switch: turn off the new recommendations in prod",
+    "ramp the onboarding_v2 flag to 50 percent",
+    "enable the export_csv toggle in staging for testing",
+    "the new checkout is buggy, switch its flag off",
+    "go to 100% on the fast_login flag in production"
+  ]
+}

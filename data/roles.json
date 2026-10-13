@@ -1,0 +1,48 @@
+{
+  "analyst": {
+    "warehouse": {"tools": ["run_query", "explain_query", "cancel_query", "get_query_status", "list_schemas", "list_tables", "describe_table", "preview_table", "list_curated_views", "get_view_definition", "marketing_spend_by_channel", "get_revenue_metrics", "list_saved_reports", "run_saved_report", "save_report", "get_query_history", "export_query_results", "schedule_report", "get_table_freshness", "search_data_catalog", "get_column_lineage"]},
+    "ads": {"tools": ["list_campaigns", "get_campaign", "list_ad_sets", "list_ads", "get_budget", "get_spend", "get_conversions", "get_pacing", "list_audiences", "list_ad_accounts"]},
+    "crm": {"tools": ["crm_search_accounts", "crm_get_account", "crm_list_contacts", "crm_get_contact", "crm_list_deals", "crm_get_deal", "crm_get_pipeline_summary", "crm_get_forecast", "crm_list_notes", "crm_list_renewals"]},
+    "billing": {"tools": ["get_billing_customer", "list_subscriptions", "get_subscription", "list_invoices", "get_invoice", "list_payments", "get_payment", "get_dunning_status", "list_plans", "get_mrr_snapshot"]},
+    "docs": {"tools": ["searchPages", "getPage", "createPage", "updatePage", "movePage", "listRecentPages", "getPageHistory", "restorePageVersion", "listDatabases", "queryDatabase", "createDatabaseRow", "updateDatabaseRow", "addComment", "listComments", "resolveComment", "sharePage", "listTemplates", "createPageFromTemplate", "exportPage"]},
+    "github": {"tools": ["github_search_repos", "github_get_file", "github_search_code", "github_list_prs", "github_get_pr", "github_list_issues", "github_search_issues", "github_create_issue", "github_comment_issue"]},
+    "slack": {"tools": ["slack_list_channels", "slack_get_channel_history", "slack_search_messages", "slack_post_message", "slack_reply_in_thread", "slack_get_thread_replies", "slack_add_reaction", "slack_list_users", "slack_get_user_profile", "slack_send_dm", "slack_schedule_message", "slack_set_reminder", "slack_list_reminders", "slack_upload_file"]}
+  },
+  "finance": {
+    "billing": {"tools": ["get_billing_customer", "list_subscriptions", "get_subscription", "change_subscription_plan", "cancel_subscription", "pause_subscription", "list_invoices", "get_invoice", "void_invoice", "send_invoice", "create_credit_note", "list_payments", "get_payment", "refund_payment", "retry_payment", "get_dunning_status", "send_payment_method_update_link", "list_plans", "apply_coupon", "get_mrr_snapshot"]},
+    "warehouse": {"tools": ["run_query", "get_query_status", "list_schemas", "list_tables", "describe_table", "preview_table", "list_curated_views", "get_view_definition", "marketing_spend_by_channel", "get_revenue_metrics", "list_saved_reports", "run_saved_report", "save_report", "export_query_results", "schedule_report", "get_table_freshness", "search_data_catalog"]},
+    "ads": {"tools": ["list_campaigns", "list_ad_accounts", "get_budget", "get_spend", "get_pacing"]},
+    "crm": {"tools": ["crm_search_accounts", "crm_get_account", "crm_list_contacts", "crm_get_contact", "crm_list_deals", "crm_get_deal", "crm_get_pipeline_summary", "crm_get_forecast", "crm_add_note", "crm_list_notes", "crm_list_renewals"]},
+    "docs": {"tools": ["searchPages", "getPage", "createPage", "updatePage", "listRecentPages", "listDatabases", "queryDatabase", "createDatabaseRow", "updateDatabaseRow", "addComment", "listComments", "listTemplates", "createPageFromTemplate", "exportPage"]},
+    "slack": {"tools": ["slack_list_channels", "slack_get_channel_history", "slack_search_messages", "slack_post_message", "slack_reply_in_thread", "slack_get_thread_replies", "slack_add_reaction", "slack_list_users", "slack_get_user_profile", "slack_send_dm", "slack_set_reminder", "slack_list_reminders", "slack_upload_file"]}
+  },
+  "marketing": {
+    "ads": {"tools": ["list_campaigns", "get_campaign", "create_campaign", "pause_campaign", "resume_campaign", "duplicate_campaign", "list_ad_sets", "update_ad_set_targeting", "list_ads", "get_budget", "set_budget", "get_spend", "get_conversions", "get_pacing", "list_audiences", "create_lookalike_audience", "upload_customer_list", "list_ad_accounts", "get_ad_disapprovals"]},
+    "warehouse": {"tools": ["run_query", "get_query_status", "list_tables", "describe_table", "preview_table", "list_curated_views", "marketing_spend_by_channel", "list_saved_reports", "run_saved_report", "export_query_results", "search_data_catalog"]},
+    "crm": {"tools": ["crm_search_accounts", "crm_get_account", "crm_list_contacts", "crm_get_contact", "crm_create_contact", "crm_list_deals", "crm_get_deal", "crm_get_pipeline_summary", "crm_add_note", "crm_list_notes", "crm_log_activity"]},
+    "billing": {"tools": ["list_plans"]},
+    "docs": {"tools": ["searchPages", "getPage", "createPage", "updatePage", "deletePage", "movePage", "listRecentPages", "getPageHistory", "restorePageVersion", "listDatabases", "queryDatabase", "createDatabaseRow", "updateDatabaseRow", "addComment", "listComments", "resolveComment", "sharePage", "listTemplates", "createPageFromTemplate", "exportPage"]},
+    "slack": {"tools": ["slack_list_channels", "slack_get_channel_history", "slack_search_messages", "slack_post_message", "slack_reply_in_thread", "slack_get_thread_replies", "slack_add_reaction", "slack_pin_message", "slack_list_users", "slack_get_user_profile", "slack_send_dm", "slack_schedule_message", "slack_set_reminder", "slack_list_reminders", "slack_create_channel", "slack_invite_to_channel", "slack_set_channel_topic", "slack_upload_file"]}
+  },
+  "engineer": {
+    "github": {"tools": ["github_search_repos", "github_get_file", "github_search_code", "github_list_prs", "github_get_pr", "github_get_pr_diff", "github_create_pr", "github_review_pr", "github_merge_pr", "github_list_issues", "github_search_issues", "github_create_issue", "github_comment_issue", "github_close_issue", "github_list_workflow_runs", "github_get_workflow_run_logs", "github_rerun_workflow", "github_list_releases", "github_create_release", "github_list_commits", "github_compare_refs"]},
+    "deploy": {"tools": ["list_services", "get_service", "list_deploys", "get_deploy_status", "trigger_deploy", "rollback_deploy", "promote_release", "get_deploy_logs", "tail_service_logs", "get_service_health", "restart_service", "scale_service", "list_env_vars", "set_env_var", "delete_env_var", "lock_environment", "unlock_environment", "list_feature_flags", "toggle_feature_flag"]},
+    "warehouse": {"tools": ["run_query", "explain_query", "cancel_query", "get_query_status", "list_schemas", "list_tables", "describe_table", "preview_table", "list_curated_views", "get_view_definition", "get_query_history", "get_table_freshness", "search_data_catalog", "get_column_lineage"]},
+    "docs": {"tools": ["searchPages", "getPage", "createPage", "updatePage", "deletePage", "movePage", "listRecentPages", "getPageHistory", "restorePageVersion", "listDatabases", "queryDatabase", "createDatabaseRow", "updateDatabaseRow", "addComment", "listComments", "resolveComment", "sharePage", "listTemplates", "createPageFromTemplate", "exportPage"]},
+    "slack": {"tools": ["slack_list_channels", "slack_get_channel_history", "slack_search_messages", "slack_post_message", "slack_reply_in_thread", "slack_get_thread_replies", "slack_add_reaction", "slack_pin_message", "slack_list_users", "slack_get_user_profile", "slack_send_dm", "slack_schedule_message", "slack_set_reminder", "slack_list_reminders", "slack_create_channel", "slack_invite_to_channel", "slack_set_channel_topic", "slack_archive_channel", "slack_upload_file"]}
+  },
+  "support": {
+    "crm": {"tools": ["crm_search_accounts", "crm_get_account", "crm_list_contacts", "crm_get_contact", "crm_create_contact", "crm_add_note", "crm_list_notes", "crm_log_activity", "crm_list_tasks", "crm_create_task"]},
+    "billing": {"tools": ["get_billing_customer", "list_subscriptions", "get_subscription", "list_invoices", "get_invoice", "send_invoice", "list_payments", "get_payment", "get_dunning_status", "send_payment_method_update_link", "list_plans"]},
+    "slack": {"tools": ["slack_list_channels", "slack_get_channel_history", "slack_search_messages", "slack_post_message", "slack_reply_in_thread", "slack_get_thread_replies", "slack_add_reaction", "slack_pin_message", "slack_list_users", "slack_get_user_profile", "slack_send_dm", "slack_set_reminder", "slack_list_reminders", "slack_upload_file"]},
+    "docs": {"tools": ["searchPages", "getPage", "createPage", "updatePage", "listRecentPages", "listDatabases", "queryDatabase", "createDatabaseRow", "updateDatabaseRow", "addComment", "listComments", "listTemplates", "createPageFromTemplate"]},
+    "github": {"tools": ["github_list_issues", "github_search_issues", "github_create_issue", "github_comment_issue"]},
+    "deploy": {"tools": ["list_deploys", "get_service_health"]}
+  },
+  "intern": {
+    "docs": {"tools": ["searchPages", "getPage", "listRecentPages", "listDatabases", "queryDatabase", "listComments", "listTemplates"]},
+    "slack": {"tools": ["slack_list_channels", "slack_get_channel_history", "slack_search_messages", "slack_get_thread_replies", "slack_list_users", "slack_get_user_profile", "slack_list_reminders"]},
+    "warehouse": {"tools": ["list_schemas", "list_tables", "describe_table", "preview_table", "list_curated_views", "list_saved_reports", "run_saved_report", "search_data_catalog"]},
+    "github": {"tools": ["github_search_repos", "github_get_file", "github_search_code", "github_list_prs", "github_get_pr", "github_list_issues", "github_search_issues", "github_list_workflow_runs", "github_list_releases", "github_list_commits"]}
+  }
+}

@@ -13,6 +13,7 @@ class Tool:
     name: str
     description: str = ""
     params: dict = field(default_factory=dict, hash=False, compare=False)
+    text: str = ""          # if set, searched as-is instead of the built text
 
     @property
     def search_text(self) -> str:
@@ -20,8 +21,11 @@ class Tool:
         description, and every parameter with its description.
 
         Splitting the name matters for keyword search: `get_invoice_pdf` and
-        `getInvoicePdf` should both match "invoice".
+        `getInvoicePdf` should both match "invoice". `text`, when given,
+        replaces all of this (benchmarks that define their own tool text).
         """
+        if self.text:
+            return self.text
         parts = [split_identifier(self.name), self.server, self.description]
         for p, desc in (self.params or {}).items():
             parts.append("%s: %s" % (split_identifier(p), desc))

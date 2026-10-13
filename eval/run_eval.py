@@ -53,6 +53,22 @@ def load(data: Path):
     else:
         queries = [json.loads(l) for l in
                    (data / "queries.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+    # An independent review (labels_review.jsonl) may accept extra tools as
+    # equally correct, or correct a wrong label. Scored alongside the
+    # original labels, never instead of them.
+    review_path = data / "labels_review.jsonl"
+    review = {}
+    if review_path.exists():
+        review = {r["id"]: r for r in (json.loads(l) for l in
+                  review_path.read_text(encoding="utf-8").splitlines() if l.strip())}
+    for q in queries:
+        r = review.get(q["id"])
+        if r and r["verdict"] == "wrong_gold":
+            q["gold_reviewed"] = list(r["suggested_gold"])
+        elif r and r["verdict"] == "add_alternates":
+            q["gold_reviewed"] = q["gold"] + [a for a in r["alternates"] if a not in q["gold"]]
+        else:
+            q["gold_reviewed"] = list(q["gold"])
     names = {t.name for t in catalog}
     for q in queries:
         for g in q["gold"] + q.get("allowed_fallback", []):
@@ -173,6 +189,9 @@ def score(router, catalog, roles, queries, k):
         acc["hit3"].append(hits[3])
         acc["hitk"].append(hits[k])
         acc["hit10"].append(hits[10])
+        rev = set(q.get("gold_reviewed") or q["gold"])
+        acc["rev_hit1"].append(bool(rev & set(top10[:1])))
+        acc["rev_hitk"].append(bool(rev & set(top10[:k])))
         acc["recallk"].append(len(gold & set(top10[:k])) / len(gold))
         acc["mrr"].append(1.0 / first if first else 0.0)
         by_diff[q.get("difficulty", "?")]["hit3"].append(hits[3])
@@ -186,6 +205,7 @@ def score(router, catalog, roles, queries, k):
     return {
         "hit@1": mean(acc["hit1"]), "hit@3": mean(acc["hit3"]), "hit@%d" % k: mean(acc["hitk"]), "hit@10": mean(acc["hit10"]),
         "recall@%d" % k: mean(acc["recallk"]), "mrr@10": mean(acc["mrr"]),
+        "reviewed_hit@1": mean(acc["rev_hit1"]), "reviewed_hit@%d" % k: mean(acc["rev_hitk"]),
         "after_filter_hit@%d" % k: mean(acc["after_hitk"]),
         "after_filter_avg_returned": mean(acc["after_returned"]),
         "leak@%d_unaware" % k: mean(acc["leak"]),
@@ -226,6 +246,8 @@ def markdown(dataset, catalog, queries, results, ctx, k):
     rows = [("Right tool ranked 1st", "hit@1"), ("Right tool in top 3", "hit@3"),
             ("Right tool in top %d" % k, "hit@%d" % k), ("Right tool in top 10", "hit@10"), ("All needed tools in top %d" % k, "recall@%d" % k),
             ("MRR (top 10)", "mrr@10"),
+            ("Ranked 1st, reviewed labels", "reviewed_hit@1"),
+            ("In top %d, reviewed labels" % k, "reviewed_hit@%d" % k),
             ("Top %d, permissions bolted on after" % k, "after_filter_hit@%d" % k),
             ("Permission-unaware top %d shows a forbidden tool" % k, "leak@%d_unaware" % k),
             ("…and it's the forbidden tool the request wanted", "forbidden_best_shown_unaware"),

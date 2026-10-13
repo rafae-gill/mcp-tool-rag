@@ -1,0 +1,200 @@
+{"id": "q001", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q002", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q003", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q004", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q005", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q006", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q007", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q008", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q009", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q010", "verdict": "ok", "alternates": [], "reason": "run_saved_report is the intent; list_saved_reports to resolve the id is plumbing, not an alternate."}
+{"id": "q011", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q012", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q013", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q014", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q015", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q016", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q017", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q018", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q019", "verdict": "ok", "alternates": [], "reason": "Refund is the intent; fallbacks list_payments/get_payment are allowed for analyst and locate the duplicate."}
+{"id": "q020", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q021", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q022", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q023", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q024", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q025", "verdict": "add_alternates", "alternates": ["get_invoice"], "reason": "Fetching the latest invoice directly is as valid as listing invoices and picking the last one."}
+{"id": "q026", "verdict": "ok", "alternates": [], "reason": "set_budget is the intent; get_budget is allowed for analyst and helps."}
+{"id": "q027", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q028", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q029", "verdict": "add_alternates", "alternates": ["slack_search_messages"], "reason": "Searching with in:#data-eng for the breakage is as good as reading channel history for the second half."}
+{"id": "q030", "verdict": "ok", "alternates": [], "reason": "rollback_deploy is the intent; analyst has no deploy tools so empty fallback is right."}
+{"id": "q031", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q032", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q033", "verdict": "ok", "alternates": [], "reason": "void_invoice is the intent; get_invoice is allowed for analyst."}
+{"id": "q034", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q035", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q036", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q037", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q038", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q039", "verdict": "ok", "alternates": [], "reason": "Both MRR tools are defensible for a current figure; snapshot is the stronger match."}
+{"id": "q040", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q041", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q042", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q043", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q044", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q045", "verdict": "wrong_gold", "alternates": [], "suggested_gold": ["crm_get_forecast"], "reason": "Safe number and stretch per rep is commit/best case from the forecast; pipeline summary does not answer it."}
+{"id": "q046", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q047", "verdict": "ok", "alternates": [], "reason": "pause_campaign is the intent; get_pacing is allowed for finance and confirms the overspend."}
+{"id": "q048", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q049", "verdict": "add_alternates", "alternates": ["list_invoices"], "reason": "list_payments requires a customer_id per the catalog, so paid invoices for September are an equally valid way to get collected cash across customers."}
+{"id": "q050", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q051", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q052", "verdict": "ok", "alternates": [], "reason": "Finance ad cost is genuinely ambiguous between reconciled and live; both already in gold."}
+{"id": "q053", "verdict": "ok", "alternates": [], "reason": "cancel_query is the intent; get_query_status is allowed for finance but needs a job id, so only marginally helpful."}
+{"id": "q054", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q055", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q056", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q057", "verdict": "ok", "alternates": [], "reason": "merge is the intent; finance has no github tools so empty fallback is right."}
+{"id": "q058", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q059", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q060", "verdict": "add_alternates", "alternates": ["crm_search_accounts"], "reason": "Same request shape as q087/q142, whose gold includes resolving the account first; keep labels consistent."}
+{"id": "q061", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q062", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q063", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q064", "verdict": "ok", "alternates": [], "reason": "restorePageVersion is right; fallback updatePage is allowed but finance lacks getPageHistory, so it cannot recover Friday's content."}
+{"id": "q065", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q066", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q067", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q068", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q069", "verdict": "ok", "alternates": [], "reason": "Yesterday's spend favours live platform numbers; no reconciliation cue in the wording."}
+{"id": "q070", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q071", "verdict": "add_alternates", "alternates": ["get_budget"], "reason": "Doubling the daily cap requires reading the current budget first, so get_budget is an equally correct first call."}
+{"id": "q072", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q073", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q074", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q075", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q076", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q077", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q078", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q079", "verdict": "ok", "alternates": [], "reason": "refund is the intent; marketing only has list_plans in billing so empty fallback is right."}
+{"id": "q080", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q081", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q082", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q083", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q084", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q085", "verdict": "ok", "alternates": [], "reason": "get_revenue_metrics is the intent; run_query is allowed for marketing and can query finance.mrr_daily."}
+{"id": "q086", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q087", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q088", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q089", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q090", "verdict": "ok", "alternates": [], "reason": "apply_coupon is the intent; no billing write tools for marketing."}
+{"id": "q091", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q092", "verdict": "add_alternates", "alternates": ["get_pacing"], "reason": "Money left on a line this month is month-to-date spend vs plan, which get_pacing answers as directly as get_budget."}
+{"id": "q093", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q094", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q095", "verdict": "ok", "alternates": [], "reason": "archive is the intent; marketing cannot archive and nothing else substitutes."}
+{"id": "q096", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q097", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q098", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q099", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q100", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q101", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q102", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q103", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q104", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q105", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q106", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q107", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q108", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q109", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q110", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q111", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q112", "verdict": "ok", "alternates": [], "reason": "refund is the intent; engineer has no billing tools."}
+{"id": "q113", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q114", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q115", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q116", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q117", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q118", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q119", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q120", "verdict": "ok", "alternates": [], "reason": "export is the intent but needs a finished job, so run_query (already in fallback) must come first; fallbacks are allowed and help."}
+{"id": "q121", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q122", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q123", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q124", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q125", "verdict": "add_alternates", "alternates": ["list_deploys"], "reason": "Deploy history gives both the current and previous prod version needed for the compare, as well as get_service."}
+{"id": "q126", "verdict": "add_alternates", "alternates": ["crm_list_deals"], "reason": "Listing deals filtered by the Oakridge account returns the deal and its amount; no deal id is given."}
+{"id": "q127", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q128", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q129", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q130", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q131", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q132", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q133", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q134", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q135", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q136", "verdict": "ok", "alternates": [], "reason": "refund is the intent; get_payment is allowed for support."}
+{"id": "q137", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q138", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q139", "verdict": "ok", "alternates": [], "reason": "rollback is the intent; list_deploys and get_service_health are allowed for support and confirm cause."}
+{"id": "q140", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q141", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q142", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q143", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q144", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q145", "verdict": "ok", "alternates": [], "reason": "cancel is the intent; get_subscription is allowed for support."}
+{"id": "q146", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q147", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q148", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q149", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q150", "verdict": "ok", "alternates": [], "reason": "apply_coupon is the intent; support has no coupon tool."}
+{"id": "q151", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q152", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q153", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q154", "verdict": "ok", "alternates": [], "reason": "run_query is the intent; list_subscriptions by plan is allowed for support and gets the customer set."}
+{"id": "q155", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q156", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q157", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q158", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q159", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q160", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q161", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q162", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q163", "verdict": "ok", "alternates": [], "reason": "void is the intent; get_invoice is allowed for support."}
+{"id": "q164", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q165", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q166", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q167", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q168", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q169", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q170", "verdict": "ok", "alternates": [], "reason": "post is the intent; intern has no posting or DM tool."}
+{"id": "q171", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q172", "verdict": "ok", "alternates": [], "reason": "run_query is the intent; run_saved_report and preview_table are allowed for intern and partially help."}
+{"id": "q173", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q174", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q175", "verdict": "add_alternates", "alternates": ["slack_list_users"], "reason": "list_users returns title and timezone, so it finds the data team lead and answers in one call."}
+{"id": "q176", "verdict": "ok", "alternates": [], "reason": "merge is the intent; get_pr is allowed for intern."}
+{"id": "q177", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q178", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q179", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q180", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q181", "verdict": "ok", "alternates": [], "reason": "deletePage is the intent; intern has no docs write tools."}
+{"id": "q182", "verdict": "add_alternates", "alternates": ["github_get_pr"], "reason": "get_pr returns check status per PR, an equally valid way to see whether CI passed on each."}
+{"id": "q183", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q184", "verdict": "ok", "alternates": [], "reason": "freshness is the intent; preview_table is allowed for intern but only weakly helps (only if rows carry a load timestamp)."}
+{"id": "q185", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q186", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q187", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q188", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q189", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q190", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q191", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q192", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q193", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q194", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q195", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q196", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q197", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q198", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q199", "verdict": "ok", "alternates": [], "reason": "Gold matches the request and no other tool is an equally correct first call."}
+{"id": "q200", "verdict": "ok", "alternates": [], "reason": "trigger_deploy is the intent; intern has no deploy tools."}

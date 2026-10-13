@@ -10,11 +10,13 @@
 | Right tool in top 10 | 52% | 73% | 65% | 94% | 94% | 83% | 97% |
 | All needed tools in top 5 | 36% | 52% | 43% | 80% | 81% | 68% | 84% |
 | MRR (top 10) | 0.32 | 0.45 | 0.39 | 0.76 | 0.72 | 0.59 | 0.80 |
+| Ranked 1st, reviewed labels | 24% | 34% | 31% | 67% | 59% | 47% | 73% |
+| In top 5, reviewed labels | 41% | 61% | 51% | 89% | 90% | 75% | 92% |
 | Top 5, permissions bolted on after | 35% | 51% | 42% | 83% | 83% | 65% | 86% |
 | Permission-unaware top 5 shows a forbidden tool | 88% | 76% | 79% | 76% | 64% | 74% | 63% |
 | …and it's the forbidden tool the request wanted | 48% | 67% | 59% | 93% | 74% | 74% | 96% |
 | Best tool forbidden: a helpful allowed tool in top 5 | 38% | 38% | 31% | 69% | 62% | 56% | 75% |
-| Median ms per search | 0.1 | 5.2 | 5.2 | 0.1 | 6.3 | 5.2 | 6.3 |
+| Median ms per search | 0.2 | 6.2 | 5.3 | 0.1 | 6.0 | 5.1 | 6.2 |
 
 **Right tool in top 3, by difficulty**
 

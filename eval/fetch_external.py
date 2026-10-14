@@ -41,7 +41,7 @@ def get(url: str, dest: Path) -> None:
     if dest.exists() and dest.stat().st_size > 0:
         return
     dest.parent.mkdir(parents=True, exist_ok=True)
-    req = urllib.request.Request(url, headers={"user-agent": "mcp-tool-router-eval"})
+    req = urllib.request.Request(url, headers={"user-agent": "mcp-tool-rag-eval"})
     with urllib.request.urlopen(req, timeout=120) as r, open(dest, "wb") as f:
         f.write(r.read())
 

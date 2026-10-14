@@ -1,4 +1,4 @@
-"""mcp-tool-router: permission-aware tool search for MCP."""
+"""mcp-tool-rag: permission-aware tool search for MCP."""
 
 from .catalog import Tool, load_catalog, split_identifier
 from .retrievers import BM25, Embeddings, EnrichedEmbeddings, Hybrid, tokenize

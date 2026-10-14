@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mcp-tool-router"
+name = "mcp-tool-rag"
 version = "0.0.1"
-description = "Permission-aware tool search for MCP: only the relevant tools each person is allowed to use."
+description = "RAG for AI tools: permission-aware tool retrieval for MCP. Each agent gets only the relevant tools its user may use."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -20,7 +20,7 @@ dev = ["pytest>=8", "fastembed>=0.4", "numpy"]
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["mcp_tool_router"]
+packages = ["mcp_tool_rag"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

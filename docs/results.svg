@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" width="900" height="250" role="img" aria-labelledby="t d">
+  <title id="t">mcp-tool-rag results</title>
+  <desc id="d">On 1,351 real requests the right tool is in the top 5: keyword 80%, meaning 89%, mix 89%, mix plus examples 92%. In the synthetic company, ordinary search shows a forbidden tool on 88%, 76% and 63% of requests; the router on 0%. Example requests added 32 points on an AI-written test and 3 points on real requests.</desc>
+  <style>
+    :root { --bg:#ffffff; --fg:#1f2328; --dim:#59636e; --line:#d1d9e0; --bar:#afb8c1; --accent:#0969da; --bad:#cf222e; --ok:#1a7f37; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0d1117; --fg:#e6edf3; --dim:#9198a1; --line:#3d444d; --bar:#484f58; --accent:#4493f8; --bad:#ff7b72; --ok:#3fb950; }
+    }
+    text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--fg); }
+    .t { font-size: 14px; font-weight: 600; }
+    .st { font-size: 12px; fill: var(--dim); }
+    .l { font-size: 12.5px; }
+    .v { font-size: 12.5px; font-weight: 600; }
+    .bar { fill: var(--bar); }
+    .best { fill: var(--accent); }
+    .bad { fill: var(--bad); }
+    .vb { fill: var(--accent); }
+    .vbad { fill: var(--bad); }
+    .vok { fill: var(--ok); }
+    .rule { stroke: var(--line); stroke-width: 1; }
+  </style>
+  <rect width="900" height="250" style="fill: var(--bg)"/>
+
+  <!-- Panel A: real requests -->
+  <text class="t" x="16" y="28">Real requests: right tool in top 5</text>
+  <text class="st" x="16" y="46">BFCL · 1,351 requests · 528 tools</text>
+  <text class="l" x="16" y="88">Keyword</text>
+  <rect class="bar" x="120" y="76" width="120" height="16" rx="3"/>
+  <text class="v" x="246" y="88">80%</text>
+  <text class="l" x="16" y="122">Meaning</text>
+  <rect class="bar" x="120" y="110" width="133.5" height="16" rx="3"/>
+  <text class="v" x="259" y="122">89%</text>
+  <text class="l" x="16" y="156">Mix</text>
+  <rect class="bar" x="120" y="144" width="133.5" height="16" rx="3"/>
+  <text class="v" x="259" y="156">89%</text>
+  <text class="l" x="16" y="190">Mix + examples</text>
+  <rect class="best" x="120" y="178" width="138" height="16" rx="3"/>
+  <text class="v vb" x="264" y="190">92%</text>
+  <line class="rule" x1="300" y1="20" x2="300" y2="200"/>
+
+  <!-- Panel B: permissions -->
+  <text class="t" x="316" y="28">Shows a tool the caller can't use</text>
+  <text class="st" x="316" y="46">Synthetic company · 200 requests · top 5</text>
+  <text class="l" x="316" y="88">Keyword search</text>
+  <rect class="bad" x="430" y="76" width="132" height="16" rx="3"/>
+  <text class="v vbad" x="568" y="88">88%</text>
+  <text class="l" x="316" y="122">Meaning search</text>
+  <rect class="bad" x="430" y="110" width="114" height="16" rx="3"/>
+  <text class="v vbad" x="550" y="122">76%</text>
+  <text class="l" x="316" y="156">Mix + examples</text>
+  <rect class="bad" x="430" y="144" width="94.5" height="16" rx="3"/>
+  <text class="v vbad" x="530" y="156">63%</text>
+  <text class="l" x="316" y="190" font-weight="600">mcp-tool-rag</text>
+  <text class="v vok" x="430" y="190">0%, by design</text>
+  <line class="rule" x1="600" y1="20" x2="600" y2="200"/>
+
+  <!-- Panel C: inflation -->
+  <text class="t" x="616" y="28">Gain from example requests</text>
+  <text class="st" x="616" y="46">Same method, top 5, two kinds of test</text>
+  <text class="l" x="616" y="100">AI-written test</text>
+  <rect class="bar" x="730" y="88" width="120" height="16" rx="3"/>
+  <text class="v" x="856" y="100">+32</text>
+  <text class="l" x="616" y="150">Real requests</text>
+  <rect class="best" x="730" y="138" width="11.3" height="16" rx="3"/>
+  <text class="v vb" x="747" y="150">+3</text>
+  <text class="st" x="616" y="190">About 10× inflated when the same AI</text>
+  <text class="st" x="616" y="206">wrote the test and the enrichment.</text>
+
+  <text class="st" x="16" y="238">Bars to scale within each panel. Full tables, method and caveats in the README; every number reproduces from eval/.</text>
+</svg>

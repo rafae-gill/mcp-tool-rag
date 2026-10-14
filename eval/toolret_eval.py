@@ -31,7 +31,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from mcp_tool_router import BM25, Embeddings, Tool, tokenize  # noqa: E402
+from mcp_tool_rag import BM25, Embeddings, Tool, tokenize  # noqa: E402
 
 SRC = ROOT / "external" / "toolret"
 OUT = ROOT / "results" / "toolret"

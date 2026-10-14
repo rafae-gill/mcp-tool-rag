@@ -54,7 +54,7 @@ def post(url, key, body, session=None, bearer=False):
 def fetch_tools(url, key, bearer=False):
     init = {"jsonrpc": "2.0", "id": 1, "method": "initialize",
             "params": {"protocolVersion": PROTOCOL, "capabilities": {},
-                       "clientInfo": {"name": "mcp-tool-router-export", "version": "0"}}}
+                       "clientInfo": {"name": "mcp-tool-rag-export", "version": "0"}}}
     resp, sid = post(url, key, init, bearer=bearer)
     if not resp or "error" in resp:
         raise SystemExit("initialize failed: %s" % resp)

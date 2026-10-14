@@ -6,8 +6,8 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from mcp_tool_router import (BM25, Hybrid, Tool, ToolRouter, allowed_for,  # noqa: E402
-                             split_identifier, tokenize)
+from mcp_tool_rag import (BM25, Hybrid, Tool, ToolRouter, allowed_for,  # noqa: E402
+                          split_identifier, tokenize)
 
 CATALOG = [
     Tool("billing", "refund_payment", "Refund a customer payment in full or in part.",

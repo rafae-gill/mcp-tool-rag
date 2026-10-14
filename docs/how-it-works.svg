@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" width="900" height="250" role="img" aria-labelledby="t d">
+  <title id="t">How mcp-tool-rag picks tools</title>
+  <desc id="d">A request and the caller's key go through a permission filter, then hybrid search over the allowed tools, and only the top few tools reach the agent. Forbidden tools are never ranked, so they can't leak.</desc>
+  <style>
+    :root { --bg:#ffffff; --fg:#1f2328; --dim:#59636e; --line:#d1d9e0; --box:#f6f8fa; --accent:#0969da; --accentbg:#ddf4ff; --ok:#1a7f37; --okbg:#dafbe1; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0d1117; --fg:#e6edf3; --dim:#9198a1; --line:#3d444d; --box:#151b23; --accent:#4493f8; --accentbg:#0c2d4b; --ok:#3fb950; --okbg:#0f2a19; }
+    }
+    text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--fg); }
+    .h { font-size: 15px; font-weight: 600; }
+    .s { font-size: 12.5px; fill: var(--dim); }
+    .num { font-size: 12px; font-weight: 700; fill: var(--accent); letter-spacing: .04em; }
+    .box { fill: var(--box); stroke: var(--line); stroke-width: 1.2; }
+    .key { fill: var(--accentbg); stroke: var(--accent); stroke-width: 1.5; }
+    .out { fill: var(--okbg); stroke: var(--ok); stroke-width: 1.5; }
+    .arrow { stroke: var(--dim); stroke-width: 1.5; fill: none; marker-end: url(#a); }
+    .head { fill: var(--dim); }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+  <rect width="900" height="250" style="fill: var(--bg)"/>
+
+  <rect class="box" x="16" y="70" width="136" height="96" rx="8"/>
+  <text class="h" x="84" y="102" text-anchor="middle">Request</text>
+  <text class="s" x="84" y="124" text-anchor="middle">"refund this</text>
+  <text class="s" x="84" y="141" text-anchor="middle">customer"</text>
+  <text class="s" x="84" y="158" text-anchor="middle">+ caller's key</text>
+  <path class="arrow" d="M152,118 L176,118"/>
+
+  <rect class="key" x="180" y="48" width="196" height="140" rx="8"/>
+  <text class="num" x="196" y="72">STEP 1</text>
+  <text class="h" x="196" y="94">Permission filter</text>
+  <text class="s" x="196" y="118">Keep only the tools this</text>
+  <text class="s" x="196" y="135">key may call. Forbidden</text>
+  <text class="s" x="196" y="152">tools are never ranked,</text>
+  <text class="s" x="196" y="169">so they can't leak.</text>
+  <path class="arrow" d="M376,118 L400,118"/>
+
+  <rect class="box" x="404" y="48" width="236" height="140" rx="8"/>
+  <text class="num" x="420" y="72">STEP 2</text>
+  <text class="h" x="420" y="94">Hybrid search</text>
+  <text class="s" x="420" y="118">Keyword match (BM25)</text>
+  <text class="s" x="420" y="135">+ meaning match (embeddings)</text>
+  <text class="s" x="420" y="152">+ example requests per tool,</text>
+  <text class="s" x="420" y="169">fused by rank</text>
+  <path class="arrow" d="M640,118 L664,118"/>
+
+  <rect class="out" x="668" y="48" width="216" height="140" rx="8"/>
+  <text class="num" x="684" y="72">STEP 3</text>
+  <text class="h" x="684" y="94">Top 5–10 tools</text>
+  <text class="s" x="684" y="118">Only these reach the agent:</text>
+  <text class="s" x="684" y="135">relevant, allowed, and a</text>
+  <text class="s" x="684" y="152">fraction of the tokens of</text>
+  <text class="s" x="684" y="169">sending every tool.</text>
+
+  <text class="s" x="16" y="226">Runs locally: a 67 MB embedding model on the CPU, about 6 ms per search, no API key, nothing leaves the machine.</text>
+</svg>

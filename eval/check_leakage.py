@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from mcp_tool_router import tokenize  # noqa: E402
+from mcp_tool_rag import tokenize  # noqa: E402
 
 WORD_OVERLAP = 0.6       # Jaccard on content words
 COSINE = 0.92            # near-paraphrase in embedding space

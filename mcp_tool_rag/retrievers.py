@@ -75,7 +75,7 @@ class Embeddings:
         try:
             from fastembed import TextEmbedding
         except ImportError as e:                                   # pragma: no cover
-            raise ImportError('pip install "mcp-tool-router[embeddings]"') from e
+            raise ImportError('pip install "mcp-tool-rag[embeddings]"') from e
         import numpy as np
 
         self._np = np

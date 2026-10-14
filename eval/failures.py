@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "eval"))
 
-from mcp_tool_router import ToolRouter, allowed_for  # noqa: E402
+from mcp_tool_rag import ToolRouter, allowed_for  # noqa: E402
 from run_eval import build, load  # noqa: E402
 
 

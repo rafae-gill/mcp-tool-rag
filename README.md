@@ -1,6 +1,9 @@
-# mcp-tool-router
+# mcp-tool-rag
 
-**Give each AI agent only the tools it needs, and only the ones its user is allowed to use.**
+**RAG for AI tools: give each agent only the tools it needs, and only the ones its user is
+allowed to use.**
+
+![Same request, two people: finance gets the refund tool, support gets read-only tools, and an ordinary search would have shown support three tools it can't use](docs/demo.gif)
 
 As teams connect more MCP servers, an agent ends up with dozens or hundreds of tools. Handing
 it all of them on every request causes three problems:
@@ -11,28 +14,27 @@ it all of them on every request causes three problems:
 3. **Exposure.** People see, and agents plan around, tools they're not allowed to use. Even
    if the call is refused later, the tool's name and description have already leaked.
 
-The router fixes all three: **filter by the caller's permissions first, then retrieve the few
-relevant tools.** The agent only ever sees those.
+It fixes all three: **filter by the caller's permissions first, then retrieve the few relevant
+tools.** The agent only ever sees those. It's retrieval-augmented generation where the thing
+retrieved is tools, not documents.
 
-```
-request + caller's key
-   │
-   ▼
-1. permission filter     only tools this key may call (mcp-gatekeeper policies)
-   │
-   ▼
-2. hybrid search         keyword (BM25) + meaning (small local embedding model),
-   │                     fused by rank; each tool also matched against example
-   │                     requests ("how people ask for this")
-   ▼
-3. top k tools           typically 5–10, sent to the agent
+![How it works: permission filter, then hybrid search, then the top 5–10 tools reach the agent](docs/how-it-works.svg)
+
+```bash
+python examples/demo.py "this customer got charged twice, give them their money back"
 ```
 
 > **Status: research preview.** The retrieval and evaluation are complete; the MCP integration
 > (a `search_tools` tool inside [mcp-gatekeeper](https://github.com/rafae-gill/mcp-gatekeeper),
 > and per-key filtering of `tools/list`) is in progress.
+>
+> **Known limitation:** if the caller has *no* relevant tool, it still returns the k closest
+> ones. Asked to roll back a deploy, a finance key (which has no deploy tools) gets
+> `refund_payment`, `get_spend` and `updatePage`. A "nothing relevant" cut-off is next.
 
 ## Results
+
+![Results: 92% top-5 on real requests; 0% forbidden tools shown vs 63–88% for ordinary search; example requests gained +32 points on an AI-written test but +3 on real requests](docs/results.svg)
 
 Three evaluations, from hardest-to-trust to most credible. All methods share one pipeline, so
 the comparisons within each table are like for like.
@@ -109,7 +111,7 @@ identical top-10 results to the reference one on every request.
 ## Run it
 
 ```bash
-git clone https://github.com/rafae-gill/mcp-tool-router && cd mcp-tool-router
+git clone https://github.com/rafae-gill/mcp-tool-rag && cd mcp-tool-rag
 pip install -e ".[dev]"
 python -m pytest -q                                   # router behaviour
 
@@ -124,7 +126,7 @@ Embeddings use [bge-small-en-v1.5](https://huggingface.co/BAAI/bge-small-en-v1.5
 fastembed: about 67 MB, CPU only, no API key, nothing leaves the machine.
 
 ```python
-from mcp_tool_router import BM25, Embeddings, Hybrid, ToolRouter, allowed_for, load_catalog
+from mcp_tool_rag import BM25, Embeddings, Hybrid, ToolRouter, allowed_for, load_catalog
 
 catalog = load_catalog("data/catalog.json")
 emb = Embeddings(catalog)
@@ -138,10 +140,12 @@ router.search("how much did we spend on ads last quarter", allowed_for(key_permi
 
 | Path | What |
 |---|---|
-| `mcp_tool_router/` | router, retrievers (BM25, embeddings, example-enriched, hybrid) |
+| `mcp_tool_rag/` | router, retrievers (BM25, embeddings, example-enriched, hybrid) |
 | `data/` | synthetic catalog, roles, 200 requests, label review, example requests |
 | `eval/` | scoring, failure analysis, leakage check, benchmark download and conversion |
 | `results/` | scores for every run reported above |
+| `examples/demo.py` | the demo above: one request, two roles, plus an ordinary search |
+| `docs/` | GIF, diagram, results chart, social card |
 
 Benchmarks are downloaded from their sources into `external/` and never re-published here.
 

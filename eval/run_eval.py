@@ -35,7 +35,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from mcp_tool_router import BM25, Embeddings, Hybrid, ToolRouter, allowed_for, load_catalog  # noqa: E402
+from mcp_tool_rag import BM25, Embeddings, Hybrid, ToolRouter, allowed_for, load_catalog  # noqa: E402
 
 DIFFICULTIES = ("easy", "paraphrase", "ambiguous", "multi", "real")
 
@@ -105,7 +105,7 @@ def _queries_from_csv(path: Path):
 def build(names, catalog, examples=None):
     """Retrievers by name. The `+ex` variants also use example requests per
     tool (data/enrichment/examples.json), written without seeing the test set."""
-    from mcp_tool_router import EnrichedEmbeddings, Tool
+    from mcp_tool_rag import EnrichedEmbeddings, Tool
     made = {}
 
     def emb():

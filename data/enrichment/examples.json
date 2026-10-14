@@ -440,22 +440,22 @@
     "get me an org-chart-ish list of people at Hollow Creek Farms"
   ],
   "crm_get_contact": [
-    "who is t.okafor@sundial-energy.com in our CRM",
+    "who is t.okafor@sundial-energy.example in our CRM",
     "get contact 88213",
-    "what's the title and phone for the person with email mbell@ferrovia.co",
-    "find the crm record for the person who just replied to me, lena@quillpress.com",
-    "which account is r.dumont@palisade-group.com attached to",
-    "look up this person by email before my call: ade@lowfield-tiles.com",
+    "what's the title and phone for the person with email mbell@ferrovia.example",
+    "find the crm record for the person who just replied to me, lena@quillpress.example",
+    "which account is r.dumont@palisade-group.example attached to",
+    "look up this person by email before my call: ade@lowfield-tiles.example",
     "details on contact id C-4410",
-    "is kpatel@emberfield.io already a contact"
+    "is kpatel@emberfield.example already a contact"
   ],
   "crm_create_contact": [
-    "add Maya Lindqvist, Head of Ops at Thornbury Freight, maya@thornbury.co to the CRM",
+    "add Maya Lindqvist, Head of Ops at Thornbury Freight, maya@thornbury.example to the CRM",
     "new person: Diego Alvarez, CFO, link him to the Halcyon Air account",
-    "I met someone at the conference, create a contact for Priya Nair, priya.nair@vellum.dev",
+    "I met someone at the conference, create a contact for Priya Nair, priya.nair@vellum.example",
     "save this business card as a contact: Tom Becker, procurement lead",
     "create a person record for the new champion at Riverbend Clinics",
-    "add the guy from the demo, Kenji Mori, kenji@saltgrass.io, title Eng Manager",
+    "add the guy from the demo, Kenji Mori, kenji@saltgrass.example, title Eng Manager",
     "we have a new buyer at Ashgrove Retail, please add her: Fatima Rahman",
     "put Lucas Brandt into the crm under the Crestline account"
   ],
@@ -1188,11 +1188,11 @@
     "put the design mockup image in #design"
   ],
   "get_billing_customer": [
-    "what payment method is on file for accounts@lumora.co",
+    "what payment method is on file for accounts@lumora.example",
     "does cus_7781 have a credit balance",
     "what currency is that customer billed in",
     "check the VAT number on the billing account for Pellucid",
-    "look up the billing profile for finance@harrowgate.io",
+    "look up the billing profile for finance@harrowgate.example",
     "is there a default card for this customer or are they invoiced",
     "what tax id do we have for customer cus_3390",
     "billing details for the customer who just emailed support"
@@ -1280,7 +1280,7 @@
   "send_invoice": [
     "email invoice INV-2041 to the customer",
     "resend the invoice, they say they never got it",
-    "send in_8812 to ap@lowmere.com instead of the default contact",
+    "send in_8812 to ap@lowmere.example instead of the default contact",
     "forward the latest invoice to their accounts payable team",
     "re-send the overdue invoice to the billing contacts",
     "deliver invoice 1188 to the customer",

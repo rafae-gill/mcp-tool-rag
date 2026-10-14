@@ -78,6 +78,6 @@ def allowed_for(permissions: dict) -> Allowed:
 
     def allowed(tool: Tool) -> bool:
         p = policies.get(tool.server)
-        return p is not None and p.grants(tool.name)
+        return p is not None and p.grants(tool.tool_name)
 
     return allowed

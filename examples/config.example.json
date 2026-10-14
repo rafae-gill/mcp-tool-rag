@@ -1,0 +1,10 @@
+{
+  "name": "tool-rag",
+  "servers": [
+    {"name": "warehouse", "url": "http://localhost:8001/mcp", "headers": {"x-api-key": "env:WAREHOUSE_KEY"}},
+    {"name": "billing", "url": "http://localhost:8002/mcp", "headers": {"x-api-key": "env:BILLING_KEY"}},
+    {"name": "deploy", "url": "http://localhost:8003/mcp"}
+  ],
+  "permissions": {"mode": "gatekeeper", "store": "env:GATEKEEPER_STORE"},
+  "limit": 8
+}

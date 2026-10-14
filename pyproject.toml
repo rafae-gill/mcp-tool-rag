@@ -14,7 +14,8 @@ dependencies = ["mcp-gatekeeper @ git+https://github.com/rafae-gill/mcp-gatekeep
 
 [project.optional-dependencies]
 embeddings = ["fastembed>=0.4", "numpy"]
-dev = ["pytest>=8", "fastembed>=0.4", "numpy"]
+server = ["mcp>=1.10", "uvicorn>=0.30", "fastembed>=0.4", "numpy"]
+dev = ["pytest>=8", "fastembed>=0.4", "numpy", "mcp>=1.10", "uvicorn>=0.30"]
 
 [tool.hatch.metadata]
 allow-direct-references = true

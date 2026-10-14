@@ -33,8 +33,9 @@ of requests; and permissions have to be applied *before* ranking, not after. Ful
    [data/real/README.md](data/real/README.md).
 3. **Use it as a Python library.** Give it your tools and each user's allowed list (mcp-gatekeeper's
    format, or your own check) and get back the right few tools. See [Run it](#run-it).
-4. **Coming next:** a standalone MCP server. Point it at your existing MCP servers and every
-   agent gets a `search_tools` tool, with optional per-user permissions.
+4. **Run it as an MCP server.** Point it at your existing MCP servers; every agent connects to
+   this one and gets `search_tools` and `call_tool`, with optional per-person permissions from
+   mcp-gatekeeper. See [Run it as an MCP server](#run-it-as-an-mcp-server).
 
 ## The problem it solves
 
@@ -57,9 +58,8 @@ retrieved is tools, not documents.
 python examples/demo.py "this customer got charged twice, give them their money back"
 ```
 
-> **Status: research preview.** The retrieval and evaluation are complete; the MCP integration
-> (a `search_tools` tool inside [mcp-gatekeeper](https://github.com/rafae-gill/mcp-gatekeeper),
-> and per-key filtering of `tools/list`) is in progress.
+> **Status: early.** The retrieval, evaluation and MCP server work and are tested end to end
+> against real upstream MCP servers; it hasn't run in production yet.
 >
 > **Known limitation:** if the caller has *no* relevant tool, it still returns the k closest
 > ones. Asked to roll back a deploy, a finance key (which has no deploy tools) gets
@@ -85,8 +85,10 @@ Together they're two layers of defence: tool-rag keeps forbidden tools out of th
 sight, and mcp-gatekeeper refuses the call if one is attempted anyway.
 
 Either works alone. mcp-gatekeeper doesn't need this repo, and this repo accepts any permission
-set in mcp-gatekeeper's shape (`{"warehouse": {"tools": [...]}}`). Running tool-rag *inside*
-the gate, as a `search_tools` tool, is the integration in progress.
+set in mcp-gatekeeper's shape (`{"warehouse": {"tools": [...]}}`). Run as an MCP server with
+`"permissions": {"mode": "gatekeeper"}`, it uses mcp-gatekeeper directly: callers sign in with
+their own key, and that key is passed through to each upstream server so its gate checks and
+audits the person, not the router.
 
 ## Results
 
@@ -192,11 +194,51 @@ key_permissions = {"warehouse": {"tools": ["run_query", "describe_table"]}}   # 
 router.search("how much did we spend on ads last quarter", allowed_for(key_permissions), k=5)
 ```
 
+## Run it as an MCP server
+
+```bash
+pip install -e ".[server]"
+python -m mcp_tool_rag serve examples/config.example.json      # http://127.0.0.1:8090/mcp
+```
+
+The config lists the MCP servers you already run (secrets as `env:NAME`, never in the file):
+
+```json
+{
+  "name": "tool-rag",
+  "servers": [
+    {"name": "warehouse", "url": "http://localhost:8001/mcp", "headers": {"x-api-key": "env:WAREHOUSE_KEY"}},
+    {"name": "billing",   "url": "http://localhost:8002/mcp", "headers": {"x-api-key": "env:BILLING_KEY"}}
+  ],
+  "permissions": {"mode": "gatekeeper", "store": "env:GATEKEEPER_STORE"},
+  "limit": 8
+}
+```
+
+Agents connect to this one server instead of all of them, and get two tools:
+
+| Tool | Does |
+|---|---|
+| `search_tools(query)` | the few tools relevant to the request **that this caller may use**, each with its server, name and input schema |
+| `call_tool(server, tool, arguments)` | runs it on its real server, after checking the permission again |
+
+`"permissions": {"mode": "none"}` lets everyone find and call every tool. `"gatekeeper"` uses
+mcp-gatekeeper keys (a `keys.json` path or a `postgresql://` DSN); each key needs this server
+(`"tool-rag"`) in its permissions with `["search_tools", "call_tool"]`.
+
+Connecting from Claude Code, for example:
+
+```bash
+claude mcp add --transport http tool-rag http://127.0.0.1:8090/mcp --header "x-api-key: sk_..."
+```
+
+The tool list is read at startup, so restart it after adding tools upstream.
+
 ## Repo layout
 
 | Path | What |
 |---|---|
-| `mcp_tool_rag/` | router, retrievers (BM25, embeddings, example-enriched, hybrid) |
+| `mcp_tool_rag/` | router, retrievers (BM25, embeddings, example-enriched, hybrid), the MCP server and upstream client |
 | `data/` | synthetic catalog, roles, 200 requests, label review, example requests |
 | `eval/` | scoring, failure analysis, leakage check, benchmark download and conversion |
 | `results/` | scores for every run reported above |

@@ -14,6 +14,12 @@ class Tool:
     description: str = ""
     params: dict = field(default_factory=dict, hash=False, compare=False)
     text: str = ""          # if set, searched as-is instead of the built text
+    original: str = ""      # the tool's name on its own server, when `name` is namespaced
+
+    @property
+    def tool_name(self) -> str:
+        """Name to check permissions against and to call upstream."""
+        return self.original or self.name
 
     @property
     def search_text(self) -> str:

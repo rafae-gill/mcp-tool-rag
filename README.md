@@ -5,6 +5,39 @@ allowed to use.**
 
 ![Same request, two people: finance gets the refund tool, support gets read-only tools, and an ordinary search would have shown support three tools it can't use](docs/demo.gif)
 
+## Why the analysis matters as much as the code
+
+Everyone is building RAG right now, and most of it is judged on a handful of questions its
+builder tried by hand. So before deciding how this should search, we measured it, three ways:
+a synthetic company with permissions, **1,351 real user requests**
+([BFCL](https://proceedings.mlr.press/v267/patil25a.html)), and the public
+[ToolRet](https://arxiv.org/abs/2503.01763) benchmark (**44,453 tools**).
+
+The finding we'd most want other RAG builders to see:
+
+> **When the same AI writes your test questions and your improvements, the gain you measure
+> can be inflated about 10×.** Giving each tool AI-written example requests looked like a
+> **+32 point** jump on our AI-written test set. On real people's requests the same change was
+> worth **+3**. Still real, but a tenth of what the synthetic test claimed.
+
+Also measured: which search method to use depends on your data, but mixing keyword and meaning
+search is the safe default; ordinary tool search shows people tools they can't use on 63–88%
+of requests; and permissions have to be applied *before* ranking, not after. Full results are
+[below](#results).
+
+## What you can do with this today
+
+1. **Read the findings.** The [results](#results), with every number reproducible from `eval/`.
+2. **Test tool search on *your* tools.** Export your MCP servers' tool lists with one command,
+   add some real requests, and see which method works for you: see
+   [data/real/README.md](data/real/README.md).
+3. **Use it as a Python library.** Give it your tools and each user's allowed list (mcp-gatekeeper's
+   format, or your own check) and get back the right few tools. See [Run it](#run-it).
+4. **Coming next:** a standalone MCP server. Point it at your existing MCP servers and every
+   agent gets a `search_tools` tool, with optional per-user permissions.
+
+## The problem it solves
+
 As teams connect more MCP servers, an agent ends up with dozens or hundreds of tools. Handing
 it all of them on every request causes three problems:
 

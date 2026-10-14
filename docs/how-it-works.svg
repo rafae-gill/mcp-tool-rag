@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" width="900" height="250" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 270" width="900" height="270" role="img" aria-labelledby="t d">
   <title id="t">How mcp-tool-rag picks tools</title>
-  <desc id="d">A request and the caller's key go through a permission filter, then hybrid search over the allowed tools, and only the top few tools reach the agent. Forbidden tools are never ranked, so they can't leak.</desc>
+  <desc id="d">A request and the caller's key go through a permission filter that reads mcp-gatekeeper policies, then hybrid search over the allowed tools, and only the top few tools reach the agent. Forbidden tools are never ranked, so they can't leak.</desc>
   <style>
     :root { --bg:#ffffff; --fg:#1f2328; --dim:#59636e; --line:#d1d9e0; --box:#f6f8fa; --accent:#0969da; --accentbg:#ddf4ff; --ok:#1a7f37; --okbg:#dafbe1; }
     @media (prefers-color-scheme: dark) {
@@ -21,7 +21,7 @@
       <path class="head" d="M0,0 L10,5 L0,10 z"/>
     </marker>
   </defs>
-  <rect width="900" height="250" style="fill: var(--bg)"/>
+  <rect width="900" height="270" style="fill: var(--bg)"/>
 
   <rect class="box" x="16" y="70" width="136" height="96" rx="8"/>
   <text class="h" x="84" y="102" text-anchor="middle">Request</text>
@@ -56,5 +56,6 @@
   <text class="s" x="684" y="152">fraction of the tokens of</text>
   <text class="s" x="684" y="169">sending every tool.</text>
 
-  <text class="s" x="16" y="226">Runs locally: a 67 MB embedding model on the CPU, about 6 ms per search, no API key, nothing leaves the machine.</text>
+  <text class="s" x="16" y="226">Step 1 reads each key's policy from mcp-gatekeeper, which also refuses any forbidden call at run time: two layers.</text>
+  <text class="s" x="16" y="248">Runs locally: a 67 MB embedding model on the CPU, about 6 ms per search, no API key, nothing leaves the machine.</text>
 </svg>

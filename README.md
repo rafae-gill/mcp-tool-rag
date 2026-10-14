@@ -32,6 +32,29 @@ python examples/demo.py "this customer got charged twice, give them their money 
 > ones. Asked to roll back a deploy, a finance key (which has no deploy tools) gets
 > `refund_payment`, `get_spend` and `updatePage`. A "nothing relevant" cut-off is next.
 
+## Works with mcp-gatekeeper
+
+The permissions themselves live in [mcp-gatekeeper](https://github.com/rafae-gill/mcp-gatekeeper):
+each person's key carries a policy (which tools, which data, which hours, how often). This repo
+has no permission system of its own. Step 1 reads those same policies, through
+mcp-gatekeeper's own policy code (`allowed_for` → `mcp_gatekeeper.ServerPolicy`), so the two
+can't disagree about what a key allows.
+
+They use the permissions for different jobs:
+
+| | mcp-gatekeeper | mcp-tool-rag |
+|---|---|---|
+| Stores each person's permissions | ✅ source of truth | reads them |
+| Decides which tools the agent **sees** | | ✅ only relevant, allowed ones |
+| Blocks a forbidden **call** at run time | ✅ refuses and logs it | |
+
+Together they're two layers of defence: tool-rag keeps forbidden tools out of the agent's
+sight, and mcp-gatekeeper refuses the call if one is attempted anyway.
+
+Either works alone. mcp-gatekeeper doesn't need this repo, and this repo accepts any permission
+set in mcp-gatekeeper's shape (`{"warehouse": {"tools": [...]}}`). Running tool-rag *inside*
+the gate, as a `search_tools` tool, is the integration in progress.
+
 ## Results
 
 ![Results: 92% top-5 on real requests; 0% forbidden tools shown vs 63–88% for ordinary search; example requests gained +32 points on an AI-written test but +3 on real requests](docs/results.svg)
